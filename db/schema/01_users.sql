@@ -1,7 +1,46 @@
 -- Drop and recreate Users table (Example)
-
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS restaurants CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS order_items CASCADE;
+DROP TABLE IF EXISTS menu_items CASCADE;
+
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  is_restaurant_owner BOOLEAN DEFAULT FALSE NOT NULL
 );
+
+CREATE TABLE restaurants (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  cuisine VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  time_ordered_at TIMESTAMP NO UPDATE,
+  date_ordered_on DATE ON UPDATE,
+  order_is_complete BOOLEAN DEFAULT FALSE NOT NULL,
+  total_amount NUMERIC(6,2) NOT NULL,
+  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+);
+
+CREATE TABLE order_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  quantity INTEGER NOT NULL,
+  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  menu_items_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+);
+
+CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  price NUMERIC(5,2) NOT NULL,
+);
+
