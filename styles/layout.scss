@@ -7,3 +7,22 @@ body {
     color: #244751;
   }
 }
+
+nav {
+    background-color: #4056A1;
+    height: 120px;
+    position: relative;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+nav button {
+  display: inline-block;
+  margin-left: 13%;
+  width: 10%;
+  margin-right: 5%;
+  height: 50px;
+  border-radius: 12px;
+}
