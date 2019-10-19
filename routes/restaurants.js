@@ -8,3 +8,19 @@
 
 const express = require('express');
 const router  = express.Router();
+
+module.exports = function(DataHelpers) {
+
+  restaurantsRoutes.get("/", function(req, res) {
+    DataHelpers.getRestaurants((err, restaurants) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(restaurants);
+      }
+    });
+  });
+
+  return restaurantsRoutes;
+
+}
