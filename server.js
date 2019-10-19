@@ -38,8 +38,9 @@ const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Added the restaurantsRoutes
+// Added the ordersRoutes
 app.use("/api/restaurants", restaurantsRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/orders", ordersRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
