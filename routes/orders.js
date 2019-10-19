@@ -4,8 +4,6 @@
  *   these routes are mounted onto /orders
  */
 
- // NOTE: UPDATE server.js AS WELL
-
 const express = require('express');
 const router  = express.Router();
 

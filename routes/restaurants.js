@@ -4,8 +4,6 @@
  *   these routes are mounted onto /restaurants
  */
 
- // NOTE: UPDATE server.js AS WELL
-
 const express = require('express');
 const router  = express.Router();
 
