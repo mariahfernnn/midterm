@@ -14,7 +14,7 @@ module.exports = function(db) {
   restaurantsRoutes.get("/", function(req, res) {
     queryFunction.getRestaurantInfo(db, 'Oretta', limit = 1)
     .then(rows => {
-      return res.json(rows[0].name);
+      return res.json(rows);
     })
   });
 
