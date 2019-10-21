@@ -6,17 +6,16 @@
 
 const express = require('express');
 const restaurantsRoutes  = express.Router();
+const queryFunction = require('../lib/query_functions');
 
-module.exports = function(DataHelpers) {
+
+module.exports = function(db) {
 
   restaurantsRoutes.get("/", function(req, res) {
-    DataHelpers.getRestaurants((err, restaurants) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(restaurants);
-      }
-    });
+    queryFunction.getRestaurantInfo(db, 'Oretta', limit = 1)
+    .then(rows => {
+      return res.json(rows);
+    })
   });
 
   return restaurantsRoutes;

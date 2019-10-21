@@ -31,7 +31,6 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Separated Routes for each Resource
 
 // Added the restaurantsRoutes
 // Added the ordersRoutes
