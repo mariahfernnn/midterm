@@ -32,10 +32,12 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
 
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+// Added the restaurantsRoutes
+// Added the ordersRoutes
+const restaurantsRoutes = require("./routes/restaurants.js");
+const ordersRoutes = require("./routes/orders.js");
+
 
 // Mount all resource routes
 // Added the restaurantsRoutes
