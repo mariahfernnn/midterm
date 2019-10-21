@@ -1,3 +1,4 @@
+
 //toggle for cuisine (button 2)
 $(document).ready(function () {
   $('#Cuisine').click(function () {
