@@ -29,14 +29,15 @@ CREATE TABLE orders (
   order_is_complete BOOLEAN DEFAULT FALSE NOT NULL,
   total_amount NUMERIC(6,2) NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
-  price NUMERIC(5,2) NOT NULL,
+  description VARCHAR(255),
+  price NUMERIC(5,2) NOT NULL
 );
 
 CREATE TABLE order_items (
@@ -44,7 +45,7 @@ CREATE TABLE order_items (
   quantity INTEGER NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  menu_items_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+  menu_items_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE
 );
 
 

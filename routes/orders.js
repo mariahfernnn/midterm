@@ -6,33 +6,32 @@
 
 const express = require('express');
 const ordersRoutes  = express.Router();
+const queryFunction = require('../lib/query_functions');
 
-module.exports = function(dataHelpers) {
+module.exports = function(db) {
 
   ordersRoutes.get("/", function(req, res) {
-    DataHelpers.getOrders((err, orders) => {
-      if (err) {
-        res.status(500).json({ error : err.message });
-      } else {
-        res.json(orders);
-      }
-    });
+    queryFunction.getRestaurantOrderInfo(db, 'Oretta', limit = 1)
+    .then(rows => {
+      console.log("ORDER FUNCTION")
+      return res.json(rows);
+    })
   });
 
-  ordersRoutes.post("/", function(req, res) {
-    if (!req.body.text) {
-      res.status(400).json({ error: 'invalid request: no data in POST body'});
-      return;
-    }
+  // ordersRoutes.post("/", function(req, res) {
+  //   if (!req.body.text) {
+  //     res.status(400).json({ error: 'invalid request: no data in POST body'});
+  //     return;
+  //   }
 
-    DataHelpers.saveOrder(order, (err) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.status(201).send();
-      }
-    });
-  });
+  //   DataHelpers.saveOrder(order, (err) => {
+  //     if (err) {
+  //       res.status(500).json({ error: err.message });
+  //     } else {
+  //       res.status(201).send();
+  //     }
+  //   });
+  // });
 
   return ordersRoutes;
 }
