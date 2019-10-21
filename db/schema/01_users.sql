@@ -5,22 +5,22 @@ DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS order_items CASCADE;
 DROP TABLE IF EXISTS menu_items CASCADE;
 
-
+--  Updated tables - changed VARCHAR to TEXT
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL,
+  name TEXT NOT NULL,
   is_restaurant_owner BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL,
-  street_address VARCHAR(255) NOT NULL,
-  city VARCHAR(255) NOT NULL,
-  province VARCHAR(255) NOT NULL,
-  post_code VARCHAR(255) NOT NULL,
-  country VARCHAR(255) NOT NULL,
-  cuisine VARCHAR(255) NOT NULL
+  name TEXT NOT NULL,
+  street_address TEXT NOT NULL,
+  city TEXT NOT NULL,
+  province TEXT NOT NULL,
+  post_code TEXT NOT NULL,
+  country TEXT NOT NULL,
+  cuisine TEXT NOT NULL
 );
 
 CREATE TABLE orders (
@@ -35,7 +35,7 @@ CREATE TABLE orders (
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
-  name VARCHAR(255) NOT NULL,
+  name TEXT NOT NULL,
   price NUMERIC(5,2) NOT NULL,
 );
 
