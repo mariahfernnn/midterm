@@ -11,9 +11,9 @@ const queryFunction = require('../lib/query_functions');
 module.exports = function(db) {
 
   ordersRoutes.get("/", function(req, res) {
-    queryFunction.getRestaurantOrderInfo(db, 'Oretta', limit = 1)
+    queryFunction.getRestaurantOrderInfo(db, 'Oretta')
     .then(rows => {
-      console.log("ORDER FUNCTION")
+      console.log("ORDER FUNCTION");
       return res.json(rows);
     })
   });
