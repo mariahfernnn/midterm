@@ -33,9 +33,15 @@
 
   <!--Homepage(homepage.css and for Checkout button layout.css)-->
   <div id="homepage">
-    <h1>Some Food App</h1>
-    <h2>Going out but without the commitment</h2>
+    <video autoplay muted loop id="homepageVid">
+      <source src="/videos/coverr-outdoor-lunch.mp4" type="video/mp4">
+    </video>
+    <div class="title">
+      <h1>Some Food App</h1>
+      <h2>Going out but without the commitment</h2>
+    </div>
     <button id="checkout">Checkout</button>
+
   </div>
 
   <!--Div for Cuisine(cuisine.css)-->
@@ -50,9 +56,10 @@
   <div class="resturants">
     <h1> Resturants and Things </h1>
   </div>
+
   <!--Toggle for check out (layout.css)-->
   <div id="checkoutToggle">
-    <form>
+    <form method='POST' action="/api/orders">
       <h1>Your Order</h1>
       <p>Place holder menu item</p>
       <button>+</button>
@@ -60,7 +67,7 @@
       <textarea name="text" placeholder="What's your name?"></textarea>
       <textarea name="text" placeholder="Where do you live?"></textarea>
       <textarea name="text" placeholder="How can we contact you?"></textarea>
-      <button>Gib us muny pls</button>
+      <input type="submit">Gib us muny pls</input>
     </form>
   </div>
 
