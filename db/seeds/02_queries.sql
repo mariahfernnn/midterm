@@ -18,7 +18,7 @@ WHERE restaurants.name = $;`
 FROM orders
 JOIN restaurants ON restaurants.id = orders.restaurant_id
 JOIN users ON users.id = orders.user_id
-WHERE restaurants.name = $;`
+WHERE restaurants.name = $1 AND users.name = $2;`
 
 -- Query to get total for order with user's name and restaurant's name
 `SELECT orders.total_amount, restaurants.name, users.name
