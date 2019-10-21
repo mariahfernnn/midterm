@@ -15,13 +15,14 @@ VALUES ('1', CURRENT_TIMESTAMP, false, '55', '1', '1');
 
 -- INSERT INTO menu_items
 INSERT INTO menu_items (id, restaurant_id, name, description, price)
-VALUES ('1', '1', 'Piemonte', 'flor di latte, truffle crema, roasted garlic, mix mushroom, tomato cheese', '21'),
-('2', '1', 'Barbabietola', 'roasted beets, goat yoghurt, almond & pistashio dressing', '15'),
-('3', '1', 'Linguine al Pomodoro', 'yellow tomato pasta, cherry tomatoes, parmigiana, basil', '19');
+VALUES ('4', '1', 'Piemonte', 'flor di latte, truffle crema, roasted garlic, mix mushroom, tomato cheese', '21'),
+('3', '1', 'Barbabietola', 'roasted beets, goat yoghurt, almond & pistashio dressing', '15'),
+('5', '1', 'Linguine al Pomodoro', 'yellow tomato pasta, cherry tomatoes, parmigiana, basil', '19');
 
 -- INSERT INTO order_items
 INSERT INTO order_items (id, quantity, customer_id, restaurant_id, order_id, menu_items_id)
-VALUES ('1', '3', '1', '1', '1', '3'),
-('1', '3', '1', '1', '1', '4'),
-('1', '3', '1', '1', '1', '5');
+VALUES
+('1', '3', '1', '1', '1', '3'),
+('2', '3', '1', '1', '1', '4'),
+('3', '3', '1', '1', '1', '5');
 
