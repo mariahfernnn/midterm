@@ -32,7 +32,7 @@ CREATE TABLE orders (
   order_is_complete BOOLEAN DEFAULT FALSE NOT NULL,
   total_amount NUMERIC(6,2) NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
-  customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 --Included description
@@ -41,7 +41,7 @@ CREATE TABLE menu_items (
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
   description TEXT NOT NULL,
-  price NUMERIC(5,2) NOT NULL,
+  price NUMERIC(5,2) NOT NULL
 );
 
 --Included customer_id
