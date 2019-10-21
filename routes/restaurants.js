@@ -7,10 +7,10 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = function(DataHelpers) {
+module.exports = function(dataHelpers) {
 
   restaurantsRoutes.get("/", function(req, res) {
-    DataHelpers.getRestaurants((err, restaurants) => {
+    dataHelpers.getRestaurants((err, restaurants) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {

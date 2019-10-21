@@ -7,7 +7,7 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = function(DataHelpers) {
+module.exports = function(dataHelpers) {
 
   ordersRoutes.get("/", function(req, res) {
     DataHelpers.getOrders((err, orders) => {

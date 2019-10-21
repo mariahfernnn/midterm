@@ -1,6 +1,6 @@
 -- Query to get info for a particular restaurant
 `SELECT restaurants.name, restaurants.street_address, restaurants.city , restaurants.province , restaurants.post_code , restaurants.country , restaurants.cuisine
-FROM  restaurants.name = $;`
+FROM restaurants WHERE restaurants.name = $;`
 
 -- Query to get restaurant for a particular cuisine
 `SELECT restaurants.name, restaurants.street_address, restaurants.city , restaurants.province , restaurants.post_code , restaurants.country , restaurants.cuisine
