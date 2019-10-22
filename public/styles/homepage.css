@@ -1,0 +1,50 @@
+#homepage {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#homepage h1 {
+  color:black;
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 0%;
+  font-size: 700%;
+  font-family: 'Playball', cursive;
+  font-weight: normal;
+}
+
+#homepage h2 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 250%;
+  margin-top: 2%;
+  font-weight: normal;
+}
+
+video {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 100%; 
+  min-height: 100%; 
+  width: 50%; 
+  height: auto;
+  z-index: -1; 
+  overflow: hidden;
+}
+
+.title {
+  background-color:rgba(255,255,255, 0.5);
+ 
+}
+
+#checkout {
+ margin-left: 90%;
+  height: 10%;
+  width: 6%;
+  border-radius: 50%;
+  position:fixed;
+}
