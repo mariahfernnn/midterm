@@ -8,11 +8,11 @@ $(document).ready(function () {
   });
 });
 
-//toggle for resturants (button 3)
+//toggle for restaurants (button 3)
 $(document).ready(function () {
-  $('#Resturants').click(function () {
+  $('#Restaurants').click(function () {
     $('html, body').animate({
-      scrollTop: $(".resturants").offset().top
+      scrollTop: $(".restaurants").offset().top
     }, 2000);
   });
 });
