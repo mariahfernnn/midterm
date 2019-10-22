@@ -6,9 +6,9 @@ module.exports = function(router) {
   const client = require('twilio')(accountSid, authToken);
 
   // Send an SMS to the restaurant
-  router.get('/api/orders', (req, res) => {
+  router.get('/', (req, res) => {
     client.messages.create({
-      to: '', //user phone number currently temp
+      to: '4169033107', //user phone number currently temp
       from: '+16476948924',
       body: 'You have a new order!'
       .then((message) => console.log(message.said))
