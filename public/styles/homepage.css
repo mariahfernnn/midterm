@@ -49,3 +49,12 @@ video {
   position:fixed;
   margin-top: 4%;
 }
+
+#checkoutToggle {
+  margin-left: 55%;
+    width: 35%;
+    text-align: center;
+}
+#checkoutToggle textarea{
+display:block;
+}
