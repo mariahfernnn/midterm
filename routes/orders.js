@@ -4,8 +4,6 @@
  *   these routes are mounted onto /orders
  */
 
- // Require Twilio
-// const restaurant = require('./twilio-sms');
 const express = require('express');
 const ordersRoutes  = express.Router();
 const queryFunction = require('../lib/query_functions');
@@ -22,7 +20,7 @@ module.exports = function(db) {
 
 // Saving an order for a particular restaurant and order
   ordersRoutes.post("/", function(req, res) {
-    queryFunction.addOrderForRestaurant(db, 85, 1, 1)
+    queryFunction.addOrderForAny(db, req.body.totalAmount, 1, 1)
     .then(rows => {
       console.log("TESTING THE ORDERS.JS");
       // res.send(restaurant);
