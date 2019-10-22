@@ -10,34 +10,34 @@ FROM  restaurants.cuisine LIKE $;`
 `SELECT orders.date_time_ordered_created, orders.order_is_complete, orders.total_amount, restaurants.name, users.name
 FROM orders
 JOIN restaurants ON restaurants.id = orders.restaurant_id
-JOIN users ON users.id = orders.user_id
+JOIN users ON users.id = orders.customer_id
 WHERE restaurants.name = $;`
 
 -- Query to get order info for a particular user
 `SELECT orders.date_time_ordered_created, orders.order_is_complete, orders.total_amount, restaurants.name, users.name
 FROM orders
 JOIN restaurants ON restaurants.id = orders.restaurant_id
-JOIN users ON users.id = orders.user_id
+JOIN users ON users.id = orders.customer_id
 WHERE restaurants.name = $1 AND users.name = $2;`
 
 -- Query to get total for order with user's name and restaurant's name
 `SELECT orders.total_amount, restaurants.name, users.name
 FROM orders
 JOIN restaurants ON restaurants.id = orders.restaurant_id
-JOIN users ON users.id = orders.user_id
+JOIN users ON users.id = orders.customer_id
 WHERE restaurants.name = $ AND users.name = $;`
 
 -- Query to get quantity of items purchased for a particular user
 `SELECT order_items.quantity, users.name, restaurants.name
 FROM order_items
-JOIN users ON users.id = order_items.user_id
+JOIN users ON users.id = order_items.customer_id
 JOIN restaurants ON restaurants.id = order_items.restaurant_id
 WHERE users.name = $;`
 
 -- Query to get quantity of items purchased for a particular restaurant
 `SELECT order_items.quantity, users.name, restaurants.name
 FROM order_items
-JOIN users ON users.id = order_items.user_id
+JOIN users ON users.id = order_items.customer_id
 JOIN restaurants ON restaurants.id = order_items.restaurant_id
 WHERE restaurants.name = $;`
 
@@ -49,7 +49,7 @@ WHERE users.name = $;`
 -- Query to get order status for a particular user
 `SELECT orders.order_is_complete, users.name
 FROM orders
-JOIN users ON users.id = orders.user_id
+JOIN users ON users.id = orders.customer_id
 WHERE users.name = $;`
 
 -- Query to get menu for each restaurant

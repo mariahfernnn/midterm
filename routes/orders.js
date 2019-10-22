@@ -3,6 +3,7 @@
  * Since this file is loaded in server.js into api/orders,
  *   these routes are mounted onto /orders
  */
+
 const express = require('express');
 const ordersRoutes  = express.Router();
 const queryFunction = require('../lib/query_functions');
@@ -22,7 +23,8 @@ module.exports = function(db) {
     queryFunction.addOrderForAny(db, req.body.totalAmount, 1, 1)
     .then(rows => {
       console.log("TESTING THE ORDERS.JS");
-      res.sendStatus(201);
+      // res.send(restaurant);
+      res.json({status: 'ok'})
     })
     console.log(req.body);
   });
