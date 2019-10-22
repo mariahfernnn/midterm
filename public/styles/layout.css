@@ -1,3 +1,105 @@
+#food {
+  height: 100vh;
+  text-align: center;
+  margin-top: 20%;
+}
+
+#food h1 {
+  background-color: red;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  line-height: 40px;
+  top: 30%;
+  font-family: 'Playball', cursive;
+  font-weight: normal;
+  font-size: 300%;
+}
+
+#food button {
+  margin-top: 25%;
+  width: 30%;
+  height: 30%;
+}
+
+.restaurants {
+  height: 100vh;
+  text-align: center;
+  margin-top: 20%;
+}
+
+.restaurants h1 {
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  line-height: 40px;
+  top: 30%;
+  font-family: 'Playball', cursive;
+  font-weight: normal;
+  font-size: 300%;
+}
+
+#homepage {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#homepage h1 {
+  color: black;
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 0%;
+  font-size: 700%;
+  font-family: 'Playball', cursive;
+  font-weight: normal;
+}
+
+#homepage h2 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 250%;
+  margin-top: 2%;
+  font-weight: normal;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: 50%;
+  height: auto;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.title {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#checkout {
+  margin-left: 90%;
+  height: 10%;
+  width: 6%;
+  border-radius: 50%;
+  position: fixed;
+  margin-top: 4%;
+}
+
+#checkoutToggle {
+  margin-left: 55%;
+  width: 35%;
+  text-align: center;
+}
+
+#checkoutToggle textarea {
+  display: block;
+}
+
 body {
   background-color: #EEE;
 }
@@ -27,9 +129,9 @@ nav button {
   border-radius: 12px;
   margin-top: 2%;
   background-color: transparent;
-    color: white;
-    box-shadow: inset 0px 0px 0px white;
-transition: all 0.5s !important;
+  color: white;
+  box-shadow: inset 0px 0px 0px white;
+  transition: all 0.5s !important;
 }
 
 nav button:hover {
