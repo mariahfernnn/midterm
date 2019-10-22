@@ -10,14 +10,13 @@
   <link rel="stylesheet" href="/styles/cuisine.css" type="text/css" />
   <link rel="stylesheet" href="/styles/restaurants.css" type="text/css" />
   <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <link
     href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
     rel="stylesheet" />
-
-
-
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/jqueryForSPA.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/toggle.js"></script>
 
@@ -28,16 +27,11 @@
     <!--Back to homepage button-->
     <button id=BackToHome>Home</button>
     <button id="Cuisine">Cuisine</button> <!-- Cuisine -->
-    <button id="Resturants">Resturants</button> <!-- Resturants -->
+    <form type=submit method=get><button id="Resturants">Resturants</button></form> <!-- Resturants -->
   </nav>
 
   <!--Homepage(homepage.css and for Checkout button layout.css)-->
   <div id="homepage">
-<<<<<<< HEAD
-    <h1>Some Food App</h1>
-    <h2>Going out but without the commitment</h2>
-    <button id="checkout">Checkout</button>
-=======
     <video autoplay muted loop id="homepageVid">
       <source src="/videos/coverr-outdoor-lunch.mp4" type="video/mp4">
     </video>
@@ -47,13 +41,12 @@
     </div>
     <button id="checkout">Checkout</button>
 
->>>>>>> 4eccbc43eff169f891dcefc4daa7805f02fd0670
   </div>
 
   <!--Div for Cuisine(cuisine.css)-->
   <div id='food'>
     <h1> Food and things </h1>
-    <input type=submit method=get action="/api/restaurants" class="asian">Asian-Fusion</input>
+    <form type=submit method=get action="/api/restaurants" ><button class="asian">Asian-Fusion</button></form>
     <button class="italian">Italian</button>
     <button class="latin">Latin</button>
   </div>
@@ -61,18 +54,19 @@
   <!--Div for Resturants(restaurants.css)-->
   <div class="resturants">
     <h1> Resturants and Things </h1>
+    <div id="restaurantsList"></div>
   </div>
 
   <!--Toggle for check out (layout.css)-->
   <div id="checkoutToggle">
-    <form method='POST' action="/api/orders">
+    <form id="orderForm" method='POST' action="/api/orders">
       <h1>Your Order</h1>
       <p>Place holder menu item</p>
       <button>+</button>
       <button>-</button>
-      <textarea name="text" placeholder="What's your name?"></textarea>
-      <textarea name="text" placeholder="Where do you live?"></textarea>
-      <textarea name="text" placeholder="How can we contact you?"></textarea>
+      <textarea id="totalAmount" placeholder="What's the total?"></textarea>
+      <textarea id="eachItem" placeholder="What is the item ordered?"></textarea>
+      <textarea id="eachItemQuantity" placeholder="What is the quantity?"></textarea>
       <input type="submit">Gib us muny pls</input>
     </form>
   </div>
