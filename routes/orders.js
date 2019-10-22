@@ -29,5 +29,8 @@ module.exports = function(db) {
     console.log(req.body);
   });
 
+// Send an SMS when a customer places an order
+
+
   return ordersRoutes;
 }
