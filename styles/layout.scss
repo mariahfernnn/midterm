@@ -1,21 +1,28 @@
 // See: https://sass-lang.com/
 
+@import "cuisine";
+@import "restaurants";
+@import "homepage";
+
+
 body {
   background-color: #EEE;
+}
 
-  h1 {
-    color: #244751;
-  }
+body h1 {
+  color: #244751;
 }
 
 nav {
-    background-color: #4056A1;
-    height: 120px;
-    position: relative;
-    top: 0;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+  background-color: black;
+  height: 120px;
+  position: relative;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 4;
 }
 
 nav button {
@@ -25,4 +32,13 @@ nav button {
   margin-right: 5%;
   height: 50px;
   border-radius: 12px;
+  margin-top: 2%;
+  background-color: transparent;
+    color: white;
+    box-shadow: inset 0px 0px 0px white;
+transition: all 0.5s !important;
+}
+
+nav button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
 }

@@ -5,7 +5,7 @@
 }
 
 #homepage h1 {
-  color: black;
+  color:black;
   text-align: center;
   margin-top: 20%;
   margin-bottom: 0%;
@@ -24,37 +24,37 @@
 
 video {
   position: absolute;
-  top: 50%;
+  top: 50%; 
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: 50%;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: 50%; 
   height: auto;
-  z-index: -1;
+  z-index: -1; 
   overflow: hidden;
 }
 
 .title {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color:rgba(255,255,255, 0.5);
+ 
 }
 
 #checkout {
-  margin-left: 90%;
+ margin-left: 90%;
   height: 10%;
   width: 6%;
   border-radius: 50%;
-  position: fixed;
+  position:fixed;
   margin-top: 4%;
 }
 
 #checkoutToggle {
   margin-left: 55%;
-  width: 35%;
-  text-align: center;
+    width: 35%;
+    text-align: center;
 }
-
-#checkoutToggle textarea {
-  display: block;
+#checkoutToggle textarea{
+display:block;
 }
