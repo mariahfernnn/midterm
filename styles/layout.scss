@@ -6,7 +6,8 @@
 
 
 body {
-  background-color: #EEE;
+  // background-image: url('/images/brick-wall.jpg');
+  align-items: center;
 }
 
 body h1 {
@@ -34,9 +35,9 @@ nav button {
   border-radius: 12px;
   margin-top: 2%;
   background-color: transparent;
-    color: white;
-    box-shadow: inset 0px 0px 0px white;
-transition: all 0.5s !important;
+  color: white;
+  box-shadow: inset 0px 0px 0px white;
+  transition: all 0.5s !important;
 }
 
 nav button:hover {

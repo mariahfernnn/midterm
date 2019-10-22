@@ -2,10 +2,11 @@
   height: 100vh;
   text-align: center;
   margin-top: 20%;
+  background-color: white;
+  width: 90%;
 }
 
 #food h1 {
-  background-color: red;
   text-align: center;
   vertical-align: middle;
   position: relative;
@@ -94,14 +95,15 @@ video {
   margin-left: 55%;
   width: 35%;
   text-align: center;
-}
-
-#checkoutToggle textarea {
-  display: block;
+  position: fixed;
+  bottom: 1px;
+  left: 10px;
+  display: none;
 }
 
 body {
-  background-color: #EEE;
+  background-image: url("/images/brick-wall.jpg");
+  align-items: center;
 }
 
 body h1 {
