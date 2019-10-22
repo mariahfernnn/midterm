@@ -52,9 +52,15 @@ video {
 
 #checkoutToggle {
   margin-left: 55%;
-    width: 35%;
-    text-align: center;
+  width: 35%;
+  text-align: center;
+  position: fixed;
+  bottom: 1px;
+  left: 10px;
+  display:none;
+
 }
-#checkoutToggle textarea{
-display:block;
-}
+// #checkoutToggle textarea{
+// display:block;
+
+// }

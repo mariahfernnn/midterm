@@ -2,10 +2,11 @@
   height: 100vh;
   text-align: center;
   margin-top: 20%;
+  background-color: white;
+  width: 90%;
 }
 
 #food h1 {
-  background-color: red;
   text-align: center;
   vertical-align: middle;
   position: relative;

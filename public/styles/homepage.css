@@ -53,8 +53,8 @@ video {
   margin-left: 55%;
   width: 35%;
   text-align: center;
-}
-
-#checkoutToggle textarea {
-  display: block;
+  position: fixed;
+  bottom: 1px;
+  left: 10px;
+  display: none;
 }
