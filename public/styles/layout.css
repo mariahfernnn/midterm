@@ -7,16 +7,15 @@ body h1 {
 }
 
 nav {
-  background-color: #4056A1;
+  background-color: black;
   height: 120px;
-  position: fixed;
+  position: relative;
   top: 0;
   display: flex;
   width: 100%;
   justify-content: space-around;
-  background-color: black;
+  position: fixed;
   z-index: 4;
-
 }
 
 nav button {
@@ -26,7 +25,5 @@ nav button {
   margin-right: 5%;
   height: 50px;
   border-radius: 12px;
-  margin-top: 2%;
-  font-family: 'Raleway', sans-serif;
-
+  margin-top: 2%
 }
