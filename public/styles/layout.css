@@ -25,5 +25,13 @@ nav button {
   margin-right: 5%;
   height: 50px;
   border-radius: 12px;
-  margin-top: 2%
+  margin-top: 2%;
+  background-color: transparent;
+    color: white;
+    box-shadow: inset 0px 0px 0px white;
+transition: all 0.5s !important;
+}
+
+nav button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
 }
