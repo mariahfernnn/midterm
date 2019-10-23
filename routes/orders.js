@@ -20,6 +20,7 @@ module.exports = function(db) {
   });
 
 // Saving an order for a particular restaurant and order
+<<<<<<< HEAD
   ordersRoutes.post("/", function(req, res) {
     sms();
     queryFunction.addOrderForAny(db, req.body.totalAmount, 1, 1)
@@ -29,6 +30,26 @@ module.exports = function(db) {
     })
     console.log(req.body);
   });
+=======
+// Get request to get the restaurant id based on it's name
+ordersRoutes.post("/", function(req, res) {
+  queryFunction.addOrderForRestaurant(db, req.body)
+  .then(rows => {
+    console.log("TESTING THE ORDERS.JS");
+    res.sendStatus(201);
+  })
+  console.log("HELLO",req.body);
+});
+
+  // ordersRoutes.post("/", function(req, res) {
+  //   queryFunction.addOrderForAny(db, req.body.totalAmount, 1, 1)
+  //   .then(rows => {
+  //     console.log("TESTING THE ORDERS.JS");
+  //     res.sendStatus(201);
+  //   })
+  //   console.log(req.body);
+  // });
+>>>>>>> master
 
 
   return ordersRoutes;

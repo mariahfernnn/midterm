@@ -1,15 +1,16 @@
 const sms = function() {
-  console.log("Running sms function")
 
-  const accountSid = 'AC0064f54265c5e13e2392866af57c21ca';
-  const authToken = '1c743935a9974cb99fb5b6fee46a405e';
+  const accountSid = process.env.TWILI0_ACCOUNT_SID;
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  const customer = process.env.CUSTOMER_PHONE_NUMBER;
+  const restaurant = process.env.RESTO_PHONE_NUMBER;
 
   const client = require('twilio')(accountSid, authToken);
 
-  // Send an SMS to the restaurant
+  // Send an SMS to the restaurant when a customer places an order
     client.messages.create({
-      to: '4169033107', //user phone number currently temp
-      from: '++16476973730',
+      to: customer,
+      from: restaurant,
       body: 'You have a new order!'
     })
       .then((message) => console.log(message.said))

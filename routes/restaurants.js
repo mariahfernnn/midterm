@@ -11,13 +11,21 @@ const queryFunction = require('../lib/query_functions');
 
 module.exports = function(db) {
 
+
+  // restaurantsRoutes.get("/", function(req, res) {
+  //   queryFunction.getAllMenuItems(db)
+  //   .then(rows => {
+  //     console.log(res.json(rows))
+  //     return res.json(rows);
+  //   })
+  // });
+
   restaurantsRoutes.get("/", function(req, res) {
-    queryFunction.getRestaurantInfo(db, 'Oretta', limit = 1)
+    queryFunction.getRestaurantNames(db)
     .then(rows => {
       return res.json(rows);
     })
   });
-
   return restaurantsRoutes;
 
 }
