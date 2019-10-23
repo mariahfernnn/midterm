@@ -36,6 +36,7 @@ app.use(express.static("public"));
 // Added the ordersRoutes
 const restaurantsRoutes = require("./routes/restaurants.js");
 const ordersRoutes = require("./routes/orders.js");
+const menusRoutes = require("./routes/menus.js")
 
 
 // Mount all resource routes
@@ -43,6 +44,7 @@ const ordersRoutes = require("./routes/orders.js");
 // Added the ordersRoutes
 app.use("/api/restaurants", restaurantsRoutes(db));
 app.use("/api/orders", ordersRoutes(db));
+app.use("/api/menus", menusRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
