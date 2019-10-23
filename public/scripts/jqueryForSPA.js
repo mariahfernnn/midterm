@@ -35,21 +35,21 @@ $("document").ready(function() {
 
   const renderMenu1 = function(menus) {
     for (let eachMenu of menus) {
-      console.log('eachMenus', eachMenu);
+      // console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems1').append($menu);
     }
   }
   const renderMenu2 = function(menus) {
     for (let eachMenu of menus) {
-      console.log('eachMenus', eachMenu);
+      // console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems2').append($menu);
     }
   }
   const renderMenu3 = function(menus) {
     for (let eachMenu of menus) {
-      console.log('eachMenus', eachMenu);
+      // console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems3').append($menu);
     }
@@ -64,7 +64,6 @@ $("document").ready(function() {
         type: 'GET',
         dataType: 'JSON'
       })
-      console.log('fetching api for restaurants', response);
       renderRestaurants(response);
     } catch (error) {
       console.error(error);
@@ -79,10 +78,10 @@ $("document").ready(function() {
         type: 'GET',
         dataType: 'JSON'
       })
-      console.log('fetching api for menus', response);
-      renderMenu1(response);
-      renderMenu2(response);
-      renderMenu3(response);
+      const menus = JSON.parse(response);
+      renderMenu1(menus.menu1);
+      renderMenu2(menus.menu2);
+      renderMenu3(menus.menu3);
     } catch (error) {
       console.error(error);
     }
