@@ -35,91 +35,94 @@ $("document").ready(function () {
 
     const renderMenu1 = function (menus) {
       for (let eachMenu of menus) {
-        console.log('eachMenus', eachMenu.id);
+        console.log('eachMenus', eachMenu);
         const $menu = createMenuList(eachMenu);
         $('#menuItems1').append($menu);
       }
-    }
-    const renderMenu2 = function (menus) {
-      for (let eachMenu of menus) {
-        // console.log('eachMenus', eachMenu);
-        const $menu = createMenuList(eachMenu);
-        $('#menuItems2').append($menu);
+      const renderMenu2 = function (menus) {
+        for (let eachMenu of menus) {
+          // console.log('eachMenus', eachMenu);
+          const $menu = createMenuList(eachMenu);
+          $('#menuItems2').append($menu);
+        }
       }
-    }
-    const renderMenu3 = function (menus) {
-      for (let eachMenu of menus) {
-        // console.log('eachMenus', eachMenu);
-        const $menu = createMenuList(eachMenu);
-        $('#menuItems3').append($menu);
+      const renderMenu3 = function (menus) {
+        for (let eachMenu of menus) {
+          // console.log('eachMenus', eachMenu);
+          const $menu = createMenuList(eachMenu);
+          $('#menuItems3').append($menu);
+        }
       }
-    }
 
 
-    // GET REQUEST for restaurants
-    const loadRestaurants = async () => {
-      try {
-        const response = await $.ajax({
-          url: `/api/restaurants`,
-          type: 'GET',
-          dataType: 'JSON'
+      // GET REQUEST for restaurants
+      const loadRestaurants = async () => {
+        try {
+          const response = await $.ajax({
+            url: `/api/restaurants`,
+            type: 'GET',
+            dataType: 'JSON'
+          })
+          renderRestaurants(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      // GET REQUEST for menus
+      const loadMenuItems = async () => {
+        try {
+          const response = await $.ajax({
+            url: `/api/menus`,
+            type: 'GET',
+            dataType: 'JSON'
+          })
+          const menus = JSON.parse(response);
+          renderMenu1(menus.menu1);
+          renderMenu2(menus.menu2);
+          renderMenu3(menus.menu3);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      // THE POST REQUEST
+      const createOrder = async () => {
+        try {
+          const response = await $.ajax({
+            url: `/api/orders`,
+            type: 'POST',
+            data: 'JSON'
+          })
+          console.log('POSTING ORDER TO THE DATABASE', response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      console.log("FUNC")
+      $('#orderForm').submit(function (e) {
+        e.preventDefault();
+        console.log("Checkout button CLIKECED");
+        $.post(`/api/orders`, {
+          restaurantName: $('#restaurantName').val(),
+          userName: $('#userName').val(),
+          eachItem: $('#itemOrdered').val(),
+          eachItemQuantity: $('#eachItemQuantity').val(),
+          totalAmount: $('#totalAmount').val()
+          // menuItemsArray: [{
+          //   id: quantity
+          //   id: qty,
+          // }]
         })
-        renderRestaurants(response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    // GET REQUEST for menus
-    const loadMenuItems = async () => {
-      try {
-        const response = await $.ajax({
-          url: `/api/menus`,
-          type: 'GET',
-          dataType: 'JSON'
-        })
-        const menus = JSON.parse(response);
-        renderMenu1(menus.menu1);
-        renderMenu2(menus.menu2);
-        renderMenu3(menus.menu3);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    // THE POST REQUEST
-    const createOrder = async () => {
-      try {
-        const response = await $.ajax({
-          url: `/api/orders`,
-          type: 'POST',
-          data: 'JSON'
-        })
-        console.log('POSTING ORDER TO THE DATABASE', response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    console.log("FUNC")
-    $('#orderForm').submit(function (e) {
-      e.preventDefault();
-      console.log("Checkout button CLIKECED");
-      $.post(`/api/orders`, {
-        restaurantName: $('#restaurantName').val(),
-        userName: $('#userName').val(),
-        eachItem: $('#itemOrdered').val(),
-        eachItemQuantity: $('#eachItemQuantity').val(),
-        totalAmount: $('#totalAmount').val()
       })
-    })
 
 
-    $('#Resturants').click(function (e) {
-      e.preventDefault();
+      $('#Resturants').click(function (e) {
+        e.preventDefault();
+      });
+      loadRestaurants();
+      loadMenuItems();
+
     });
-    loadRestaurants();
-    loadMenuItems();
-
-  });
 });
