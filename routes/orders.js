@@ -7,6 +7,7 @@
 const express = require('express');
 const ordersRoutes  = express.Router();
 const queryFunction = require('../lib/query_functions');
+const sms = require("./twilio-sms");
 
 module.exports = function(db) {
 // Getting the orders for a particular restaurant
@@ -20,16 +21,14 @@ module.exports = function(db) {
 
 // Saving an order for a particular restaurant and order
   ordersRoutes.post("/", function(req, res) {
+    sms();
     queryFunction.addOrderForAny(db, req.body.totalAmount, 1, 1)
     .then(rows => {
       console.log("TESTING THE ORDERS.JS");
-      // res.send(restaurant);
       res.json({status: 'ok'})
     })
     console.log(req.body);
   });
-
-// Send an SMS when a customer places an order
 
 
   return ordersRoutes;

@@ -1,23 +1,23 @@
-module.exports = function(router) {
+const sms = function() {
+  console.log("Running sms function")
 
-  const accountSid = 'AC6b4c066e19243197a0f9c89e8b820948';
-  const authToken = '46aed9184dfb1b8a050a8ac27057aa2a';
+  const accountSid = 'AC0064f54265c5e13e2392866af57c21ca';
+  const authToken = '1c743935a9974cb99fb5b6fee46a405e';
 
   const client = require('twilio')(accountSid, authToken);
 
   // Send an SMS to the restaurant
-  router.get('/', (req, res) => {
     client.messages.create({
       to: '4169033107', //user phone number currently temp
-      from: '+16476948924',
+      from: '++16476973730',
       body: 'You have a new order!'
+    })
       .then((message) => console.log(message.said))
       .catch(e => {
         console.error(e);
         res.send(e)
       })
-    })
-  })
-  return router;
 }
+
+module.exports = sms;
 
