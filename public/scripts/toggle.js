@@ -29,12 +29,10 @@ $(document).ready(function () {
   })
 });
 
-// Implementing Twilio - Place order button in the checkout
+// Place order button in the checkout
 $(document).ready(function () {
-  // const twilio = require('./twilio-sms');
   $('#place-order').click(function () {
     console.log("Someone has placed an order!")
-    // return twilio;
   })
 });
 
