@@ -24,11 +24,14 @@ $("document").ready(function () {
   // This function will create a list of menu items
   const createMenuList = function (menuObject) {
     const HTMLmarkup = `
-    <article class="testingMenuObj" data-restaurantId = ${menuObject.id}>
+    <div class="testingMenuObj" data-restaurantId = ${menuObject.id}>
                   <div id="restaurant_${menuObject.id}">${menuObject.name}</div>
                   <div class="restaurant">${menuObject.price}</div>
+                  <button id="${menuObject.id}buttonMinus"> - </button>
+                  <button id="${menuObject.id}buttonPlus"> + </button>
                   <div class="restaurant">${menuObject.description}</div>
-              </article>`
+              </div>`
+
     return HTMLmarkup;
   }
 
