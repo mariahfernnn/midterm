@@ -25,8 +25,8 @@ const renderRestaurants = function(restaurants) {
 $("document").ready(function() {
   const createMenuList = function(menuObject) {
     const HTMLmarkup = `
-    <article class="testingMenuObj">
-                  <div class="restaurant">${menuObject.name}</div>
+    <article class="testingMenuObj" data-restaurantId = ${menuObject.id}>
+                  <div id="restaurant_${menuObject.id}">${menuObject.name}</div>
                   <div class="restaurant">${menuObject.price}</div>
                   <div class="restaurant">${menuObject.description}</div>
               </article>`
@@ -35,7 +35,7 @@ $("document").ready(function() {
 
   const renderMenu1 = function(menus) {
     for (let eachMenu of menus) {
-      // console.log('eachMenus', eachMenu);
+      console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems1').append($menu);
     }
@@ -111,6 +111,10 @@ $("document").ready(function() {
         eachItem: $('#itemOrdered').val(),
         eachItemQuantity: $('#eachItemQuantity').val(),
         totalAmount: $('#totalAmount').val()
+        // menuItemsArray: [{
+        //   id: quantity
+        //   id: qty,
+        // }]
       })
     })
 
