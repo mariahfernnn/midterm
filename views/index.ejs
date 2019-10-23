@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 ​
+
 <head>
   <title>Home Page</title>
-​
+  ​
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -13,18 +14,19 @@
   <link
     href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
     rel="stylesheet" />
-​
-​
-​
-​
+  ​
+  ​
+  ​
+  ​
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/toggle.js"></script>
   <script type="text/javascript" src="/scripts/jqueryForSPA.js"></script>
 
-​
+  ​
 </head>
 ​
+
 <body>
   <nav>
     <!--Back to homepage button-->
@@ -32,7 +34,7 @@
     <button id="Cuisine">Cuisine</button> <!-- Cuisine -->
     <button id="Restaurants">Restaurants</button> <!-- Restaurants -->
   </nav>
-​
+  ​
   <!--Homepage(homepage.css and for Checkout button layout.css)-->
   <div id="homepage">
     <video autoplay muted loop id="homepageVid">
@@ -43,9 +45,9 @@
       <h2>Going out but without the commitment</h2>
     </div>
     <button id="checkout">Checkout</button>
-​
+    ​
   </div>
-​
+  ​
   <!--Div for Cuisine(cuisine.css)-->
   <div id='food'>
     <h1> Food and things </h1>
@@ -53,7 +55,7 @@
     <button class="italian">Italian</button>
     <button class="latin">Latin</button>
   </div>
-​
+  ​
   <!--Div for restaurants(restaurants.css)-->
   <div class="restaurants" action="/api/orders">
     <form method="POST">
@@ -65,18 +67,18 @@
           <span id="quantity">quantity</span>
         </span>
         <span>
-            <div id="restaurantsList2"></div>
-            <div id="menuItems2"></div>
-          </span>
-          <span>
-              <div id="restaurantsList3"></div>
-              <div id="menuItems3"></div>
-            </span>
+          <div id="restaurantsList2"></div>
+          <div id="menuItems2"></div>
+        </span>
+        <span>
+          <div id="restaurantsList3"></div>
+          <div id="menuItems3"></div>
+        </span>
 
       </div>
     </form>
   </div>
-​
+  ​
   <!--Toggle for check out (homepage.css)-->
   <div id="checkoutToggle">
     <form id="orderForm" method='POST' action="/api/orders">
@@ -92,7 +94,8 @@
       <input type="submit" id="place-order"></input>
     </form>
   </div>
-​
+  ​
 </body>
 ​
+
 </html>

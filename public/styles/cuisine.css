@@ -4,6 +4,7 @@
   margin-top: 20%;
   background-color: white;
   width: 90%;
+  margin: auto;
 }
 
 #food h1 {
@@ -14,11 +15,20 @@
   top: 30%;
   font-family: 'Playball', cursive;
   font-weight: normal;
-  font-size: 300%;
+  font-size: 500%;
 }
 
 #food button {
   margin-top: 25%;
   width: 30%;
   height: 30%;
+  margin-left: 2%;
+}
+
+#asian {
+  transform: all 0.5;
+}
+
+#asian:hover {
+  background-color: pink;
 }
