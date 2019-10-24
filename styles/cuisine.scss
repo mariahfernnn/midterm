@@ -17,7 +17,7 @@
     font-weight: normal;
     font-size: 500%;
   }
-  
+
 //These are the lines across cuisine h1
   #food h1:before,
 #food h1:after {
@@ -28,7 +28,7 @@
     height: .25em; // controls how far apart they are
     position: relative;
     vertical-align: middle;
-    width: 50%;
+    width: 35%;
     margin-bottom: .15em;
 }
 #food h1:before {
@@ -48,9 +48,9 @@
   border-radius: 12px;
   transition: all 0.5s !important;
   font-family: 'Raleway', sans-serif;
+  font-size: 125%;
 }
 
 #food button:hover {
   box-shadow: inset 150px 0px 0px #2F3B47;
-
 }

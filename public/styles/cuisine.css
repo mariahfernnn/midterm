@@ -27,7 +27,7 @@
   height: .25em;
   position: relative;
   vertical-align: middle;
-  width: 50%;
+  width: 35%;
   margin-bottom: .15em;
 }
 
@@ -49,6 +49,7 @@
   border-radius: 12px;
   transition: all 0.5s !important;
   font-family: 'Raleway', sans-serif;
+  font-size: 125%;
 }
 
 #food button:hover {

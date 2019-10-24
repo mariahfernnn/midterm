@@ -15,6 +15,29 @@
   font-size: 500%;
 }
 
+.restitle:before,
+.restitle:after {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  content: "";
+  display: inline-block;
+  height: .25em;
+  position: relative;
+  vertical-align: middle;
+  width: 30%;
+  margin-bottom: .15em;
+}
+
+.restitle:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.restitle:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
 .testingMenuObj h1 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 300%;
