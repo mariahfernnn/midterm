@@ -69,6 +69,8 @@ app.get("/", (req, res) => {
   ]
   res.render("index", { restaurants, menus: data });
 });
+
+//this is for owner side
 app.get("/orders", (req, res) => {
   // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
   // WHERE order.id = ${req.params.id}
@@ -77,7 +79,7 @@ app.get("/orders", (req, res) => {
   res.render('resOwners')
 });
 
-//This is for restaurants owner side
+//This is for user side
 app.get("/orders/:id", (req, res) => {
   // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
   // WHERE order.id = ${req.params.id}
