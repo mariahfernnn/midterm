@@ -6,7 +6,6 @@
 
 
 body {
-  // background-image: url('/images/brick-wall.jpg');
   align-items: center;
 }
 
@@ -42,4 +41,8 @@ nav button {
 
 nav button:hover {
   box-shadow: inset 150px 0px 0px #2F3B47;
+}
+
+.hidden {
+  display: none;
 }

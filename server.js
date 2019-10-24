@@ -10,6 +10,8 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
 
+const data = require('./data');
+
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
@@ -71,6 +73,7 @@ app.get("/", (req, res) => {
     {})
     res.render("index", { restaurants, menus });
   }
+
 });
 
 app.post('/login', (req, res) => {
