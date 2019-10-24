@@ -18,19 +18,42 @@
   font-size: 500%;
 }
 
+#food h1:before,
+#food h1:after {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  content: "";
+  display: inline-block;
+  height: .25em;
+  position: relative;
+  vertical-align: middle;
+  width: 35%;
+  margin-bottom: .15em;
+}
+
+#food h1:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+#food h1:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
 #food button {
   margin-top: 25%;
   width: 30%;
   height: 30%;
   margin-left: 2%;
+  border-radius: 12px;
+  transition: all 0.5s !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 125%;
 }
 
-#asian {
-  transform: all 0.5;
-}
-
-#asian:hover {
-  background-color: pink;
+#food button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
 }
 
 .restaurants {
@@ -48,6 +71,34 @@
   font-family: 'Playball', cursive;
   font-weight: normal;
   font-size: 500%;
+}
+
+.restitle:before,
+.restitle:after {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  content: "";
+  display: inline-block;
+  height: .25em;
+  position: relative;
+  vertical-align: middle;
+  width: 30%;
+  margin-bottom: .15em;
+}
+
+.restitle:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.restitle:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.testingMenuObj h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 300%;
 }
 
 #homepage {

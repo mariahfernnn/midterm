@@ -62,6 +62,15 @@ app.get("/", (req, res) => {
   res.render("index",{ restaurants, menus: data });
 });
 
+//This is for restaurants owner side
+app.get("/orders/:id", (req, res) => {
+  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id}
+
+  //trigger twillio
+  res.render('restaurants')
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

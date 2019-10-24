@@ -5,11 +5,11 @@ console.log("loaded");
 $("document").ready(function () {
   const createRestaurantList = function (restaurantObject) {
     const HTMLmarkup = `
-  <article class="testingRestObj" data-restaurantId = ${restaurantObject.id}>
+  <div class="testingRestObj" data-restaurantId = ${restaurantObject.id}>
                 <div>
                 <span class="restaurant">${restaurantObject.name}</span>
                 </div>
-            </article>`
+            </div>`
     return HTMLmarkup;
   }
 
@@ -23,6 +23,7 @@ $("document").ready(function () {
   // Using jQuery's document ready function to ensure script loads after the document is ready
 
   // This function will create a list of menu items
+
   // const createMenuList = function (menuObject) {
   //   const HTMLmarkup = `
   //   <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
