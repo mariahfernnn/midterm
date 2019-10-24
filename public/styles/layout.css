@@ -50,6 +50,11 @@
   font-size: 500%;
 }
 
+.testingMenuObj h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 300%;
+}
+
 #homepage {
   height: 100vh;
   overflow: hidden;

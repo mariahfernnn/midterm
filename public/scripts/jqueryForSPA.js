@@ -4,11 +4,11 @@
 $("document").ready(function () {
   const createRestaurantList = function (restaurantObject) {
     const HTMLmarkup = `
-  <article class="testingRestObj" data-restaurantId = ${restaurantObject.id}>
+  <div class="testingRestObj" data-restaurantId = ${restaurantObject.id}>
                 <div>
                 <span class="restaurant">${restaurantObject.name}</span>
                 </div>
-            </article>`
+            </div>`
     return HTMLmarkup;
   }
 
@@ -24,8 +24,8 @@ $("document").ready(function () {
   // This function will create a list of menu items
   const createMenuList = function (menuObject) {
     const HTMLmarkup = `
-    <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
-                  <div id="restaurantID_${menuObject.restaurant_id}">${menuObject.name}</div>
+    <div class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
+                  <h1 id="restaurantID_${menuObject.restaurant_id}">${menuObject.name}</h1>
                   <div class="restaurant">${menuObject.price}</div>
                   <button id="${menuObject.id}buttonMinus"> - </button>
                   <button id="${menuObject.id}buttonPlus"> + </button>
