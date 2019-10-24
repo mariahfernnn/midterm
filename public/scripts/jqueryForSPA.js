@@ -1,4 +1,4 @@
-// Using jQuery's document ready function to ensure script loads after the document is ready
+ // Using jQuery's document ready function to ensure script loads after the document is ready
 
 // This function will create a list of restaurants
 console.log("loaded");
@@ -24,7 +24,6 @@ $("document").ready(function () {
 
   // This function will create a list of menu items
 
-
   // const createMenuList = function (menuObject) {
   //   const HTMLmarkup = `
   //   <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
@@ -41,7 +40,7 @@ $("document").ready(function () {
 
   const renderMenu1 = function (menus) {
     for (let eachMenu of menus) {
-      // console.log('eachMenus', eachMenu);
+      console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems1').append($menu);
     }
@@ -123,11 +122,6 @@ $("document").ready(function () {
       console.error(error);
     }
   }
-// $(`#qtyButton`).click(function(e) {
-//   // console.log(e.target)
-//   $(`.qty1`).text(5);
-// })
-
 
   console.log("FUNC")
   $('#orderForm').submit(function (e) {
