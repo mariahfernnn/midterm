@@ -31,8 +31,14 @@
   <nav>
     <!--Back to homepage button-->
     <button id=BackToHome>Home</button>
-    <button id="Cuisine">Cuisine</button> <!-- Cuisine -->
-    <button id="Restaurants">Restaurants</button> <!-- Restaurants -->
+    <button id="Cuisine">Restaurants</button>
+    <button id="Restaurants">Menus</button>
+    <form method="GET" action="/orders/:id">
+      <button id="YourOrder"> Your Order</button>
+    </form>
+    <form method="GET" action="/login">
+      <button id="login">Restaurant Login</button>
+    </form>
   </nav>
 
   <!--Homepage(homepage.css and for Checkout button layout.css)-->
@@ -52,9 +58,9 @@
 
   <div id='food'>
 
-    <h1> Food and things </h1>
+    <h1> Restaurants </h1>
     <% for (let restaurant of restaurants) { %>
-      <button class="restaurant-select" data-id="<%= restaurant.id %>"><%= restaurant.name %></button>
+    <button class="restaurant-select" data-id="<%= restaurant.id %>"><%= restaurant.name %></button>
     <% }; %>
   </div>
   ​
@@ -63,28 +69,28 @@
     <% for (let restaurant of restaurants) { %>
 
 
-      <form id="orderForm<%= restaurant.id %>" class="menu" method="POST" action="/api/orders">
-        <h1><%= restaurant.name %></h1>
-        <input type="number" value="<%= restaurant.id %>" name="restaurantId" hidden>
+    <form id="orderForm<%= restaurant.id %>" class="menu" method="POST" action="/api/orders">
+      <h1><%= restaurant.name %></h1>
+      <input type="number" value="<%= restaurant.id %>" name="restaurantId" hidden>
 
-        <div style="display: block; flex-wrap: wrap;">
-          <% menus[`${restaurant.id}`].forEach((menuItem, index) => { %>
-            <!-- <%= JSON.stringify(menuItem) %> -->
-            <h2><%= menuItem.name %></h2>
-            <input name="orderItems[<%= index %>][id]" value="<%= menuItem.id %>" hidden>
-            <input name="orderItems[<%= index %>][price]" value="<%= menuItem.price %>" hidden>
-            <div type="number">
-              <p><%= menuItem.description %></p>
-              <%= menuItem.price %>
-            </div>
-            <input id="qtyButton" name="orderItems[<%= index %>][quantity]" type="number" min="0">
-          <% }); %>
-          <!-- loop through menuITems[rest...] -->
-          <!-- item[price] hidden -->
-          <!-- item[menu_item_id] hidden -->
+      <div style="display: block; flex-wrap: wrap;">
+        <% menus[`${restaurant.id}`].forEach((menuItem, index) => { %>
+        <!-- <%= JSON.stringify(menuItem) %> -->
+        <h2><%= menuItem.name %></h2>
+        <input name="orderItems[<%= index %>][id]" value="<%= menuItem.id %>" hidden>
+        <input name="orderItems[<%= index %>][price]" value="<%= menuItem.price %>" hidden>
+        <div type="number">
+          <p><%= menuItem.description %></p>
+          <%= menuItem.price %>
         </div>
-        <button type="submit">Order</button>
-      </form>
+        <input id="qtyButton" name="orderItems[<%= index %>][quantity]" type="number" min="0">
+        <% }); %>
+        <!-- loop through menuITems[rest...] -->
+        <!-- item[price] hidden -->
+        <!-- item[menu_item_id] hidden -->
+      </div>
+      <button type="submit">Order</button>
+    </form>
     <% } %>
 
   </div>
@@ -106,13 +112,18 @@
   </div>
 
   <script>
-    $('.restaurant-select').on('click', function() {
+    $('.restaurant-select').on('click', function () {
       const id = $(this).attr("data-id");
       $(".menu").addClass("hidden");
       $("#orderForm" + id).removeClass("hidden");
       $('html, body').animate({
+<<<<<<< HEAD
           scrollTop: ($('#orderForm' + id).offset().top - 200)
       },500);
+=======
+        scrollTop: ($('#orderForm' + id).offset().top)
+      }, 500);
+>>>>>>> 922e3313d8493f54567791d88b6598e636a643e6
 
 
     })

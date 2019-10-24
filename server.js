@@ -10,6 +10,14 @@ const sass = require("node-sass-middleware");
 const app = express();
 const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session')
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["POTATO"],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 
 const data = require('./data');
 
@@ -83,21 +91,40 @@ app.get("/", (req, res) => {
 
         res.render("index", { restaurants, menus });
       });
-
-    });
+    })
   }
+})
+//this is for owner side
+app.get("/orders", (req, res) => {
+  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id}
 
+  //trigger twillio
+  res.render('resOwners')
 });
+
+//This is for user side
+app.get("/orders/:id", (req, res) => {
+  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id}
+  res.render('restaurants')
+
+})
 
 app.post('/login', (req, res) => {
   // auth stuff res.sessions = ...
   res.redirect('/orders');
 });
 
-// Todo
-// - implement authentication (copy over from tinyapp)
-// - Add login link maybe using modal on index.ejs that redirects to /orders
-// - build restaurant view
+
+app.get("/login", (req, res) => {
+  res.render('login')
+})
+
+app.post('/login', (req, res) => {
+  req.session.user_id = '1';
+  res.redirect('/orders');
+})
 
 
 app.listen(PORT, () => {

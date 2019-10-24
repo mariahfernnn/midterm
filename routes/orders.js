@@ -31,7 +31,7 @@ ordersRoutes.post("/", function(req, res) {
   })
   .then(rows => {
     console.log("TESTING THE ORDERS.JS");
-    res.sendStatus(201);
+    // res.sendStatus(201);
   })
   console.log("HELLO",req.body);
 
