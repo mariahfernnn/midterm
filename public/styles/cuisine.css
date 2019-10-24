@@ -24,11 +24,3 @@
   height: 30%;
   margin-left: 2%;
 }
-
-#asian {
-  transform: all 0.5;
-}
-
-#asian:hover {
-  background-color: pink;
-}
