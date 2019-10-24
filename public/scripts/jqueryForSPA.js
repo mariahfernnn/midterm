@@ -1,6 +1,7 @@
 // Using jQuery's document ready function to ensure script loads after the document is ready
 
 // This function will create a list of restaurants
+console.log("loaded");
 $("document").ready(function () {
   const createRestaurantList = function (restaurantObject) {
     const HTMLmarkup = `
@@ -22,18 +23,19 @@ $("document").ready(function () {
   // Using jQuery's document ready function to ensure script loads after the document is ready
 
   // This function will create a list of menu items
-  const createMenuList = function (menuObject) {
-    const HTMLmarkup = `
-    <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
-                  <div id="restaurantID_${menuObject.restaurant_id}">${menuObject.name}</div>
-                  <div class="restaurant">${menuObject.price}</div>
-                  <button id="${menuObject.id}buttonMinus"> - </button>
-                  <button id="${menuObject.id}buttonPlus"> + </button>
-                  <div class="restaurant">${menuObject.description}</div>
-              </div>`
+  // const createMenuList = function (menuObject) {
+  //   const HTMLmarkup = `
+  //   <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
+  //                 <div id="restaurantID_${menuObject.restaurant_id}">${menuObject.name}</div>
+  //                 <div class="restaurant">${menuObject.description}</div>
+  //                 <div class="restaurant">$${menuObject.price}</div>
+  //                 <div class="cart-quantity">
+  //                   <input type="number" name="updates[]" id="updates_{{ ${menuObject.restaurant_id}${menuObject.id} }}" class="quantity" value="{{ ${menuObject.restaurant_id}${menuObject.id} }}" min="0" />
+  //                 </div>
+  //             </div>`
 
-    return HTMLmarkup;
-  }
+  //   return HTMLmarkup;
+  // }
 
   const renderMenu1 = function (menus) {
     for (let eachMenu of menus) {
@@ -89,6 +91,23 @@ $("document").ready(function () {
     }
   }
 
+  // Add menu items to the menuItemsArray in the order form
+  // let menuItemsOrdered = [];
+  // $('#')
+
+  // $('#menuItemsObj').submit((event) => {
+  //   event.preventDefault();
+  //   const inputs = $( this ).serializeArray()
+
+  //   inputs.reduce((obj, input) => {
+  //     // const restaurantId, id = input.name.split(':');
+
+  //     value = input.value;
+  //   }, {})
+  // })
+
+
+
   // THE POST REQUEST
   const createOrder = async () => {
     try {
@@ -106,20 +125,15 @@ $("document").ready(function () {
   console.log("FUNC")
   $('#orderForm').submit(function (e) {
     e.preventDefault();
-    console.log("Checkout button CLIKECED");
+
     $.post(`/api/orders`, {
       restaurantName: $('#restaurantName').val(),
       userName: $('#userName').val(),
-      eachItem: $('#itemOrdered').val(),
-      eachItemQuantity: $('#eachItemQuantity').val(),
-      totalAmount: $('#totalAmount').val()
-      // menuItemsArray: [{
-      //   id: quantity
-      //   id: qty,
-      // }]
-    })
+      totalAmount: $('#totalAmount').val(),
+      menuItemsOrdered: menuItemsOrdered
+      }
+    )
   })
-
 
   $('#Resturants').click(function (e) {
     e.preventDefault();
@@ -127,5 +141,13 @@ $("document").ready(function () {
   loadRestaurants();
   loadMenuItems();
 
+  // Get items into cart function
+  const cart = [];
+  console.log("testests")
 
+  $(".placeOrder").on('click  ', (evt) => {
+    evt.preventDefault();
+    // const item = {menuItemId: , quantity: price:};
+    // debugger
+  })
 });
