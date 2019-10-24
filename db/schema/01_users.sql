@@ -31,7 +31,7 @@ CREATE TABLE orders (
   created_at TIMESTAMP NOT NULL,
   is_complete BOOLEAN DEFAULT FALSE NOT NULL,
   total_amount NUMERIC(6,2) NOT NULL,
-  -- restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
   user_name VARCHAR(255) NOT NULL
 );
 

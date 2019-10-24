@@ -22,8 +22,13 @@ module.exports = function(db) {
 // Saving an order for a particular restaurant and order
 // Get request to get the restaurant id based on it's name
 ordersRoutes.post("/", function(req, res) {
+  sms();
+  console.log('NOOOOOOO!!!!!!')
+  console.log(req.body);
   req.body.orderItems.filter(item => item.quantity !== "0");
-  queryFunction.addOrderForRestaurant(db, req.body)
+  queryFunction.addOrderForRestaurant(db, req.body, (id) => {
+    res.redirect(`/orders/${id}`)
+  })
   .then(rows => {
     console.log("TESTING THE ORDERS.JS");
     res.sendStatus(201);

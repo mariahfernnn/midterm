@@ -8,6 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
+const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
 
 const data = require('./data');
@@ -36,17 +37,17 @@ app.use(express.static("public"));
 
 // Added the restaurantsRoutes
 // Added the ordersRoutes
-const restaurantsRoutes = require("./routes/restaurants.js");
+// const restaurantsRoutes = require("./routes/restaurants.js");
 const ordersRoutes = require("./routes/orders.js");
-const menusRoutes = require("./routes/menus.js")
+// const menusRoutes = require("./routes/menus.js")
 
 
 // Mount all resource routes
 // Added the restaurantsRoutes
 // Added the ordersRoutes
-app.use("/api/restaurants", restaurantsRoutes(db));
+// app.use("/api/restaurants", restaurantsRoutes(db));
 app.use("/api/orders", ordersRoutes(db));
-app.use("/api/menus", menusRoutes(db));
+// app.use("/api/menus", menusRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -59,19 +60,31 @@ app.get("/", (req, res) => {
     // const menuItems = await getMenuItemsForOwner(res.session.user_id);
     res.render("orders", { menuItems: menuItems });
   } else {
-    const restaurants = await queryFunctions.getRestaurants();
-    const menuItems = await queryFunctions.getMenuItems();
-    const menus = menuItems.reduce((acc, item) => {
-      return {
-        ...acc,
-        [item.restaurantId]: [
-          ...acc[item.restaurantId],
-          item,
-        ]
-      }
-    },
-    {})
-    res.render("index", { restaurants, menus });
+    // console.log("TESTSTESTS")
+    // console.log(queryFunctions);
+    queryFunctions.getRestaurants(db).then( restaurants => {
+      queryFunctions.getMenuItems(db).then( menuItems => {
+        const menus = menuItems.reduce((acc, item) => {
+
+
+          console.log(item)
+          console.log('acc--->',acc[item.restaurant_id])
+          return {
+            ...acc,
+            [item.restaurant_id]: acc[item.restaurant_id] ?
+            [ ...acc[item.restaurant_id], item] : [item],
+          }
+        },
+        {})
+
+        console.log("MENU");
+        console.log(menus)
+
+
+        res.render("index", { restaurants, menus });
+      });
+
+    });
   }
 
 });
