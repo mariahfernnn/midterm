@@ -34,7 +34,7 @@
     <button id="Cuisine">Cuisine</button> <!-- Cuisine -->
     <button id="Restaurants">Restaurants</button> <!-- Restaurants -->
   </nav>
-  ​
+
   <!--Homepage(homepage.css and for Checkout button layout.css)-->
   <div id="homepage">
     <video autoplay muted loop id="homepageVid">
@@ -49,34 +49,44 @@
   </div>
   ​
   <!--Div for Cuisine(cuisine.css)-->
+
   <div id='food'>
+
     <h1> Food and things </h1>
-    <button class="asian">Asian-Fusion</button>
-    <button class="italian">Italian</button>
-    <button class="latin">Latin</button>
+    <% for (let restaurant of restaurants) { %>
+      <button class="restaurant-select" data-id="<%= restaurant.id %>"><%= restaurant.name %></button>
+    <% }; %>
   </div>
   ​
   <!--Div for restaurants(restaurants.css)-->
-  <div class="restaurants" action="/api/orders">
-    <form method="POST">
-      <h1> Restaurants and Things </h1>
-      <div>
-        <span>
-          <div id="restaurantsList1"></div>
-          <div id="menuItems1"></div>
-          <span id="quantity">quantity</span>
-        </span>
-        <span>
-          <div id="restaurantsList2"></div>
-          <div id="menuItems2"></div>
-        </span>
-        <span>
-          <div id="restaurantsList3"></div>
-          <div id="menuItems3"></div>
-        </span>
+  <div class="restaurants">
+    <% for (let restaurant of restaurants) { %>
 
-      </div>
-    </form>
+
+      <form id="orderForm<%= restaurant.id %>" class="menu" method="POST" action="/api/orders">
+        <h1><%= restaurant.name %></h1>
+        <input type="number" value="<%= restaurant.id %>" name="restaurantId" hidden>
+
+        <div style="display: block; flex-wrap: wrap;">
+          <% menus[`${restaurant.id}`].forEach((menuItem, index) => { %>
+            <!-- <%= JSON.stringify(menuItem) %> -->
+            <h2><%= menuItem.name %></h2>
+            <input name="orderItems[<%= index %>][id]" value="<%= menuItem.id %>" hidden>
+            <input name="orderItems[<%= index %>][price]" value="<%= menuItem.price %>" hidden>
+            <div type="number">
+              <p><%= menuItem.description %></p>
+              <%= menuItem.price %>
+            </div>
+            <input id="qtyButton" name="orderItems[<%= index %>][quantity]" type="number" min="0">
+          <% }); %>
+          <!-- loop through menuITems[rest...] -->
+          <!-- item[price] hidden -->
+          <!-- item[menu_item_id] hidden -->
+        </div>
+        <button type="submit">Order</button>
+      </form>
+    <% } %>
+
   </div>
   ​
   <!--Toggle for check out (homepage.css)-->
@@ -92,9 +102,33 @@
       <textarea id="eachItemQuantity" placeholder="quantity?"></textarea>
       <textarea id="totalAmount" placeholder="totalAmount?"></textarea>
       <input type="submit" id="place-order"></input>
-
     </form>
   </div>
+
+  <script>
+    $('.restaurant-select').on('click', function() {
+      const id = $(this).attr("data-id");
+      $(".menu").addClass("hidden");
+      $("#orderForm" + id).removeClass("hidden");
+      $('html, body').animate({
+          scrollTop: ($('#orderForm' + id).offset().top)
+      },500);
+
+
+    })
+  </script>
+  <!--
+    <script>
+    // To override form submit
+      const cart = {
+        items: [],
+      }
+
+      $('#orderForm1').on('submit', (event) => {
+        event.preventDefault();
+        console.log('submitting!: ', event);
+      });
+    </script> -->
   ​
 </body>
 ​

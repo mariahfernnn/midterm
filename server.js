@@ -10,6 +10,8 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
 
+const data = require('./data');
+
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
@@ -52,7 +54,21 @@ app.use("/api/menus", menusRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  const restaurants = [
+    {id: 1, name: 'Oretta'},
+    {id: 2, name: 'Baro'},
+    {id: 3, name: 'Lee'},
+  ]
+  res.render("index",{ restaurants, menus: data });
+});
+
+//This is for restaurants owner side
+app.get("/orders/:id", (req, res) => {
+  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id}
+
+  //trigger twillio
+  res.render('restaurants')
 });
 
 app.listen(PORT, () => {

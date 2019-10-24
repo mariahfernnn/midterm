@@ -18,17 +18,39 @@
     font-size: 500%;
   }
 
+//These are the lines across cuisine h1
+  #food h1:before,
+#food h1:after {
+    border-top: 2px solid #000; //controls the thickness of the lines
+    border-bottom: 2px solid #000; // ^ same as this
+    content: "";
+    display: inline-block;
+    height: .25em; // controls how far apart they are
+    position: relative;
+    vertical-align: middle;
+    width: 35%;
+    margin-bottom: .15em;
+}
+#food h1:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+#food h1:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
 #food button {
   margin-top: 25%;
   width: 30%;
   height: 30%;
   margin-left:2%;
+  border-radius: 12px;
+  transition: all 0.5s !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 125%;
 }
 
-#asian {
-  transform: all 0.5;
-}
-
-#asian:hover {
-  background-color: pink;
+#food button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
 }
