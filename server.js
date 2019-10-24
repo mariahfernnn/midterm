@@ -9,6 +9,14 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
+const cookieSession = require('cookie-session')
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["POTATO"],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 
 const data = require('./data');
 
@@ -55,14 +63,23 @@ app.use("/api/menus", menusRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const restaurants = [
-    {id: 1, name: 'Oretta'},
-    {id: 2, name: 'Baro'},
-    {id: 3, name: 'Lee'},
+    { id: 1, name: 'Oretta' },
+    { id: 2, name: 'Baro' },
+    { id: 3, name: 'Lee' },
   ]
-  res.render("index",{ restaurants, menus: data });
+  res.render("index", { restaurants, menus: data });
 });
 
-//This is for restaurants owner side
+//this is for owner side
+app.get("/orders", (req, res) => {
+  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id}
+
+  //trigger twillio
+  res.render('resOwners')
+});
+
+//This is for user side
 app.get("/orders/:id", (req, res) => {
   // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
   // WHERE order.id = ${req.params.id}
@@ -70,6 +87,16 @@ app.get("/orders/:id", (req, res) => {
   //trigger twillio
   res.render('restaurants')
 });
+
+app.get("/login", (req, res) => {
+  res.render('login')
+})
+
+app.post('/login', (req, res) => {
+  req.session.user_id = '1';
+  res.redirect('/orders');
+})
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
