@@ -52,8 +52,37 @@ app.use("/api/menus", menusRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  if (res.session && res.session.user_id) {
+    const menuItems = [];
+    // const menuItems = await getMenuItemsForOwner(res.session.user_id);
+    res.render("orders", { menuItems: menuItems });
+  } else {
+    const restaurants = await queryFunctions.getRestaurants();
+    const menuItems = await queryFunctions.getMenuItems();
+    const menus = menuItems.reduce((acc, item) => {
+      return {
+        ...acc,
+        [item.restaurantId]: [
+          ...acc[item.restaurantId],
+          item,
+        ]
+      }
+    },
+    {})
+    res.render("index", { restaurants, menus });
+  }
 });
+
+app.post('/login', (req, res) => {
+  // auth stuff res.sessions = ...
+  res.redirect('/orders');
+});
+
+// Todo
+// - implement authentication (copy over from tinyapp)
+// - Add login link maybe using modal on index.ejs that redirects to /orders
+// - build restaurant view
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

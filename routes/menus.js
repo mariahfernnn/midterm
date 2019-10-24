@@ -13,9 +13,9 @@ module.exports = function(db) {
 
 
   menusRoutes.get("/", async function(req, res) {
-    const menu1 = await queryFunction.getMenuForRestaurant1(db);
-    const menu2 = await queryFunction.getMenuForRestaurant2(db);
-    const menu3 = await queryFunction.getMenuForRestaurant3(db);
+    const menu1 = await queryFunction.getMenuForRestaurant(db, 1);
+    const menu2 = await queryFunction.getMenuForRestaurant(db, 2);
+    const menu3 = await queryFunction.getMenuForRestaurant(db, 3);
     const result = {
       menu1: menu1,
       menu2: menu2,

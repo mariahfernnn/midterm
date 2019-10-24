@@ -15,9 +15,9 @@ VALUES ('Oretta', '633 King Street', 'Toronto', 'Ontario', 'M5V 1M5', 'Canada', 
 
 -- INSERT INTO orders
 -- Sample data only
-INSERT INTO orders (date_time_ordered_created, order_is_complete, total_amount, restaurant_id, customer_id)
-VALUES (CURRENT_TIMESTAMP, false, 55, 1, 1),
-(CURRENT_TIMESTAMP, false, 55, 2, 2);
+INSERT INTO orders (created_at, is_complete, total_amount, user_name)
+VALUES (CURRENT_TIMESTAMP, false, 55, 'Vasily'),
+(CURRENT_TIMESTAMP, false, 65, 'Mikias');
 
 -- INSERT INTO menu_items
 INSERT INTO menu_items (restaurant_id, name, description, price)
@@ -42,8 +42,7 @@ VALUES(1, 'Burrata con Carciofi', 'shaved artichoke salad, pecorino romano, blac
 
 -- INSERT INTO order_items
 -- Sample data only
-INSERT INTO order_items (quantity, customer_id, restaurant_id, order_id, menu_items_id)
-VALUES
-(3, 1, 1, 1, 3),
-(3, 1, 1, 1, 4),
-(3, 1, 1, 1, 5);
+INSERT INTO order_items (quantity, price, order_id, menu_items_id)
+VALUES (3, 12, 1, 3),
+(6, 25, 1, 4),
+(9, 22, 1, 5);

@@ -26,15 +26,18 @@ $("document").ready(function () {
     const HTMLmarkup = `
     <article class="testingMenuObj" data-restaurantId = ${menuObject.restaurant_id} =>
                   <div id="restaurantID_${menuObject.restaurant_id}">${menuObject.name}</div>
+                  <input type="button" id="qtyButton"></input>
+                  <span id="qty${menuObject.id}" data-menuItemID = ${menuObject.id} >0</span>
                   <div class="restaurant">${menuObject.price}</div>
                   <div class="restaurant">${menuObject.description}</div>
-              </article>`
-    return HTMLmarkup;
-  }
+                  </article>`
+                  button_increment(menuObject);
+                  return HTMLmarkup;
+                }
 
   const renderMenu1 = function (menus) {
     for (let eachMenu of menus) {
-      console.log('eachMenus', eachMenu);
+      // console.log('eachMenus', eachMenu);
       const $menu = createMenuList(eachMenu);
       $('#menuItems1').append($menu);
     }
@@ -99,21 +102,32 @@ $("document").ready(function () {
       console.error(error);
     }
   }
+// $(`#qtyButton`).click(function(e) {
+//   // console.log(e.target)
+//   $(`.qty1`).text(5);
+// })
 
-  console.log("FUNC")
-  $('#orderForm').submit(function (e) {
-    e.preventDefault();
-    console.log("Checkout button CLIKECED");
+const button_increment = function (someObject) {
+  $(`#qtyButton`).click(function(e) {
+    const qtyVal = $(`#qty${someObject.id}`).val();
+    $(`#qty${someObject.id}`).text(qtyVal + 1);
+  })
+}
+
+console.log("FUNC")
+$('#orderForm').submit(function (e) {
+  e.preventDefault();
+  const article = document.querySelector('#qty1');
+  console.log(article.dataset.menuitemid);
+  const menuItemsArray = [{id: article.dataset.menuitemid, qty: 90}];
+    console.log(menuItemsArray);
     $.post(`/api/orders`, {
       restaurantName: $('#restaurantName').val(),
       userName: $('#userName').val(),
       eachItem: $('#itemOrdered').val(),
       eachItemQuantity: $('#eachItemQuantity').val(),
-      totalAmount: $('#totalAmount').val()
-      // menuItemsArray: [{
-      //   id: quantity
-      //   id: qty,
-      // }]
+      totalAmount: $('#totalAmount').val(),
+      menuItemsOrdered: menuItemsArray
     })
   })
 

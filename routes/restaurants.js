@@ -21,9 +21,12 @@ module.exports = function(db) {
   // });
 
   restaurantsRoutes.get("/", function(req, res) {
-    queryFunction.getRestaurantNames(db)
+    queryFunction.getRestaurantInfo(db)
     .then(rows => {
       return res.json(rows);
+    })
+    .catch(err => {
+      return res.status(400).json(err);
     })
   });
   return restaurantsRoutes;

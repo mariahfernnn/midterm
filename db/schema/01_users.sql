@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS menu_items CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  is_restaurant_owner BOOLEAN DEFAULT FALSE NOT NULL
+  is_restaurant_owner BOOLEAN DEFAULT TRUE NOT NULL
 );
 
 --Included owner_id
@@ -28,11 +28,11 @@ CREATE TABLE restaurants (
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
-  date_time_ordered_created TIMESTAMP NOT NULL,
-  order_is_complete BOOLEAN DEFAULT FALSE NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  is_complete BOOLEAN DEFAULT FALSE NOT NULL,
   total_amount NUMERIC(6,2) NOT NULL,
-  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
-  customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  -- restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  user_name VARCHAR(255) NOT NULL
 );
 
 --Included description
@@ -48,8 +48,9 @@ CREATE TABLE menu_items (
 CREATE TABLE order_items (
   id SERIAL PRIMARY KEY NOT NULL,
   quantity INTEGER NOT NULL,
-  customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
+  price NUMERIC(6,2) NOT NULL,
+  -- customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  -- restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
   menu_items_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE
 );
