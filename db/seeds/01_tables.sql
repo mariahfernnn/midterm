@@ -23,7 +23,7 @@ VALUES (CURRENT_TIMESTAMP, false, 55, 1, 1),
 INSERT INTO menu_items (restaurant_id, name, description, price)
 VALUES(1, 'Burrata con Carciofi', 'shaved artichoke salad, pecorino romano, black pepper, lemon', 24),
 (1, 'Cesare', 'baby romaine, focaccia crumbs, pickled white anchovies, parmiggiano, pancetta, caesar dressing', 15),
-(1, 'Barbabietola', 'roasted beets, goat yoghurt, almond & pistashio dressing', 15),
+(1, 'Barbabietola', 'roasted beets, goat yoghurt, almond & pistachio dressing', 15),
 (1, 'Piemonte', 'flor di latte, truffle crema, roasted garlic, mix mushroom, tomato cheese', 21),
 (1, 'Linguine al Pomodoro', 'yellow tomato pasta, cherry tomatoes, parmigiana, basil', 19),
 (1, 'Conchiglie e Pistacchio', 'shell shaped pasta, pistachio pesto, garlic, baby shrimp, orange zest, basil', 25),
