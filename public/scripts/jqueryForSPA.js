@@ -1,4 +1,4 @@
-// Using jQuery's document ready function to ensure script loads after the document is ready
+ // Using jQuery's document ready function to ensure script loads after the document is ready
 
 // This function will create a list of restaurants
 console.log("loaded");

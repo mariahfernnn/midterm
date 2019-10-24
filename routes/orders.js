@@ -12,7 +12,7 @@ const sms = require("./twilio-sms");
 module.exports = function(db) {
 // Getting the orders for a particular restaurant
   ordersRoutes.get("/", function(req, res) {
-    queryFunction.getRestaurantOrderInfo(db, 'Oretta')
+    queryFunction.getOrderInfo(db, 'Oretta')
     .then(rows => {
       console.log("ORDER FUNCTION");
       return res.json(rows);
@@ -22,13 +22,19 @@ module.exports = function(db) {
 // Saving an order for a particular restaurant and order
 // Get request to get the restaurant id based on it's name
 ordersRoutes.post("/", function(req, res) {
-  // queryFunction.addOrderForRestaurant(db, req.body)
-  // .then(rows => {
-  //   // console.log("TESTING THE ORDERS.JS");
-  //   res.json(req.body);
-  // })
-  res.json(req.body.order_items.filter(x => x.quantity !== ""));
-  console.log("HELLO",req.body.order_items);
+  sms();
+  console.log('NOOOOOOO!!!!!!')
+  console.log(req.body);
+  req.body.orderItems.filter(item => item.quantity !== "0");
+  queryFunction.addOrderForRestaurant(db, req.body, (id) => {
+    res.redirect(`/orders/${id}`)
+  })
+  .then(rows => {
+    console.log("TESTING THE ORDERS.JS");
+    // res.sendStatus(201);
+  })
+  console.log("HELLO",req.body);
+
 });
 
   // ordersRoutes.post("/", function(req, res) {
