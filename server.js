@@ -55,11 +55,11 @@ app.use("/api/menus", menusRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const restaurants = [
-    {id: 1, name: 'Oretta'},
-    {id: 2, name: 'Baro'},
-    {id: 3, name: 'Lee'},
+    { id: 1, name: 'Oretta' },
+    { id: 2, name: 'Baro' },
+    { id: 3, name: 'Lee' },
   ]
-  res.render("index",{ restaurants, menus: data });
+  res.render("index", { restaurants, menus: data });
 });
 
 //This is for restaurants owner side
@@ -70,6 +70,10 @@ app.get("/orders/:id", (req, res) => {
   //trigger twillio
   res.render('restaurants')
 });
+
+app.get("/login", (req, res) => {
+  res.render('login')
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
