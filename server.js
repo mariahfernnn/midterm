@@ -97,13 +97,12 @@ app.get("/", (req, res) => {
   }
 })
 //this is for owner side
-app.get("/orders", (req, res) => {
-  // console.log('TESSSSTINNNNGGGGG ', req.params)
-  // `SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
-  // WHERE order.id = ${req.params.id};`
+app.get("/orders", async (req, res) => {
+  const allOrderInfo = await queryFunctions.getOrderInfo(db)
+  let templateVars1 = {allOrderInfo: allOrderInfo};
+  console.log(templateVars1)
 
-  //trigger twillio
-  res.render('resOwners')
+  res.render('resOwners', templateVars1)
 });
 
 //This is for user side
@@ -111,8 +110,7 @@ app.get("/orders/:id", async (req, res) => {
   const orderInfo = await queryFunctions.getAllOrderInfo(db, req.params.id)
   let templateVars = {orderInfo: orderInfo};
   res.render('restaurants', templateVars)
-
-})
+});
 
 app.get("/sms/:id", async (req, res) => {
   await sms();

@@ -7,6 +7,11 @@
 
 <body>
   <button> Owner press me pls </button>
+  <% for (let eachOrder of allOrderInfo) { %>
+    <%= eachOrder.name %>
+    <%= eachOrder.total_amount %>
+    <%= eachOrder.quantity %>
+    <% } %>
 </body>
 
 
