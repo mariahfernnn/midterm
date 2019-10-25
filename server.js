@@ -1,6 +1,7 @@
 // load .env data into process.env
 require('dotenv').config();
 
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
@@ -10,7 +11,7 @@ const sass = require("node-sass-middleware");
 const app = express();
 const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
-const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session');
 
 app.use(cookieSession({
   name: 'session',
@@ -104,10 +105,11 @@ app.get("/orders", (req, res) => {
 });
 
 //This is for user side
-app.get("/orders/:id", (req, res) => {
-  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
-  // WHERE order.id = ${req.params.id}
-  res.render('restaurants')
+app.get("/orders/:id", async (req, res) => {
+  const orderInfo = await queryFunctions.getAllOrderInfo(db, req.params.id)
+  let templateVars = {orderInfo: orderInfo};
+  console.log(templateVars.orderInfo[0]);
+  res.render('restaurants', templateVars)
 
 })
 
