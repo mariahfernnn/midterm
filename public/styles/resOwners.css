@@ -51,5 +51,10 @@ body {
 div {
   margin-left: 27%;
   font-size: 110%;
+}
 
+a {
+  margin-left: 47%;
+  font-size: 150%;
+  font-family: 'Playball', cursive;
 }

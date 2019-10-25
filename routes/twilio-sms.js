@@ -22,3 +22,26 @@ const sms = function() {
 
 module.exports = sms;
 
+const smsResto = function() {
+
+  const accountSid = process.env.TWILI0_ACCOUNT_SID;
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  const customer = process.env.CUSTOMER_PHONE_NUMBER;
+  const restaurant = process.env.RESTO_PHONE_NUMBER;
+
+  const restaurantOwner = require('twilio')(accountSid, authToken);
+
+  // Send an SMS to the restaurant when a customer places an order
+  restaurantOwner.messages.create({
+      to: customer,
+      from: restaurant,
+      body: 'Your order is ready!'
+    })
+      .then((message) => console.log(message.said))
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      })
+}
+
+module.exports = smsResto;
