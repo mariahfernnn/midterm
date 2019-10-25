@@ -112,7 +112,6 @@
   </div>
 
   <script>
-<<<<<<< HEAD
     $('.restaurant-select').on('click', function () {
       const id = $(this).attr("data-id");
       $(".menu").addClass("hidden");
@@ -121,20 +120,8 @@
         scrollTop: ($('#orderForm' + id).offset().top - 200)
       }, 500);
     })
-
   </script>
-=======
-      $('.restaurant-select').on('click', function () {
-        const id = $(this).attr("data-id");
-        $(".menu").addClass("hidden");
-        $("#orderForm" + id).removeClass("hidden");
-        $('html, body').animate({
-          scrollTop: ($('#orderForm' + id).offset().top - 200)
-        },500);
-      })
-    </script>
 
->>>>>>> 96ad5b4fab0a055e56265396356ee048b7353b6d
   <!--
     <script>
     // To override form submit
