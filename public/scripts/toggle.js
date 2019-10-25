@@ -36,4 +36,14 @@ $(document).ready(function () {
   })
 });
 
+// Order is ready!
+$(document).ready(function () {
+  $('#Completed').click(function () {
+    console.log("Your order is ready!")
+  })
+});
+
+
+
+
 
