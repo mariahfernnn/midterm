@@ -47,7 +47,7 @@
       <source src="/videos/coverr-outdoor-lunch.mp4" type="video/mp4">
     </video>
     <div class="title">
-      <h1>Some Food App</h1>
+      <h1>The Other Food App</h1>
       <h2>Going out but without the commitment</h2>
     </div>
     <button id="checkout">Checkout</button>
@@ -116,10 +116,11 @@
       const id = $(this).attr("data-id");
       $(".menu").addClass("hidden");
       $("#orderForm" + id).removeClass("hidden");
+      $('html, body').animate({
         scrollTop: ($('#orderForm' + id).offset().top - 200)
-      },500);
-
+      }, 500);
     })
+
   </script>
   <!--
     <script>
