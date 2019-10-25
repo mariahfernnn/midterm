@@ -7,8 +7,8 @@
 
   <link rel="stylesheet" href="/styles/order_history.css" type="text/css" />
   <link
-  href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
-  rel="stylesheet" />
+    href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
+    rel="stylesheet" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 </head>
@@ -21,12 +21,13 @@
   <nav>
     <!-- <button id="my-orders">My Orders</button> -->
     <div>
-    <form method="GET" action="/" id="back-to-home">
-      <button>Home</button>
-     </form>
+      <form method="GET" action="/" id="back-to-home">
+        <button>Home</button>
+      </form>
     </div>
   </nav>
   <div class="orders">
+    <h1>My Order</h1>
     <form id='getOrders' method="GET" action="/api/orders">
       <% for (let eachOrder of orderInfo) {%>
       <div><%= eachOrder.name %></div>
@@ -40,7 +41,7 @@
   </div>
 
   <!--Button to send out twilio response-->
-  <button>Click me!</button>
+  <button class="checkout">Checkout</button>
 
 </body>
 
