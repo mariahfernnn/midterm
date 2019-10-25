@@ -196,6 +196,28 @@ nav button {
   transition: all 0.5s !important;
 }
 
+nav form button {
+  display: inline-block;
+  margin-left: 13%;
+  width: 10%;
+  margin-right: 5%;
+  height: 50px;
+  border-radius: 12px;
+  margin-top: 2%;
+  background-color: transparent;
+  color: white;
+  box-shadow: inset 0px 0px 0px white;
+  transition: all 0.5s !important;
+}
+
+#YourOrder {
+  width: 100%;
+}
+
+#login {
+  width: 80%;
+}
+
 nav button:hover {
   box-shadow: inset 150px 0px 0px #2F3B47;
 }
