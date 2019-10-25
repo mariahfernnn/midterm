@@ -37,6 +37,11 @@ body {
   margin: 0%;
 }
 
+h1 {
+  font-family: 'Playball', cursive;
+  font-size: 325%;
+}
+
 #BackToHome {
   width: 100%;
   margin-top: 25px;
