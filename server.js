@@ -12,6 +12,7 @@ const app = express();
 const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
+const smsResto = require("./routes/twilio-sms")
 
 app.use(cookieSession({
   name: 'session',
@@ -109,6 +110,11 @@ app.get("/orders/:id", async (req, res) => {
   let templateVars = { orderInfo: orderInfo };
   res.render('restaurants', templateVars)
 
+})
+
+app.get("/api/sms/orders", async (req, res) => {
+  smsResto();
+  res.redirect("/orders");
 })
 
 app.post('/login', (req, res) => {
