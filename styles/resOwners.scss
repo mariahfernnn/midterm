@@ -1,0 +1,57 @@
+nav {
+  background-color: black;
+  height: 120px;
+  position: relative;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 4;
+}
+
+nav form button {
+  display: inline-block;
+  width: 4em;
+  height: 50px;
+  border-radius: 12px;
+  margin-top: 50%;
+  margin-left: auto;
+  background-color: transparent;
+  color: white;
+  box-shadow: inset 0px 0px 0px white;
+  transition: all 0.5s !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 100%;
+  white-space: normal;
+
+}
+
+nav button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
+}
+
+body {
+  margin: 0;
+}
+
+#back-to-home {
+  width: 100px;
+}
+
+.incOrders {
+  margin-top: 15%;
+  text-align: center;
+  
+}
+
+.incOrders {
+  font-family: 'Playball', cursive;
+  font-size: 400%;
+}
+
+div {
+  margin-left: 27%;
+  font-size: 125%
+}
+
