@@ -1,0 +1,44 @@
+body {
+  align-items: center;
+}
+
+nav {
+  background-color: black;
+  height: 120px;
+  position: relative;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 4;
+}
+
+nav button {
+  display: inline-block;
+  width: 10%;
+  height: 50px;
+  border-radius: 12px;
+  margin-top: 2%;
+  background-color: transparent;
+  color: white;
+  box-shadow: inset 0px 0px 0px white;
+  transition: all 0.5s !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 100%;
+}
+
+nav button:hover {
+  box-shadow: inset 150px 0px 0px #2F3B47;
+}
+
+#my-orders {
+  margin-left: auto;
+}
+
+#back-to-home {
+  margin-left: 1em;
+  margin-right: 1em;
+  height: 200px;
+  width: 200px;
+}

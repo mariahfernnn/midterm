@@ -116,10 +116,8 @@
       const id = $(this).attr("data-id");
       $(".menu").addClass("hidden");
       $("#orderForm" + id).removeClass("hidden");
-      $('html, body').animate({
-        scrollTop: ($('#orderForm' + id).offset().top)
-      }, 500);
-
+        scrollTop: ($('#orderForm' + id).offset().top - 200)
+      },500);
 
     })
   </script>
