@@ -12,6 +12,7 @@ const app = express();
 const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
+const sms = require("./routes/twilio-sms");
 
 app.use(cookieSession({
   name: 'session',
@@ -97,8 +98,9 @@ app.get("/", (req, res) => {
 })
 //this is for owner side
 app.get("/orders", (req, res) => {
-  // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
-  // WHERE order.id = ${req.params.id}
+  // console.log('TESSSSTINNNNGGGGG ', req.params)
+  // `SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
+  // WHERE order.id = ${req.params.id};`
 
   //trigger twillio
   res.render('resOwners')
@@ -108,9 +110,13 @@ app.get("/orders", (req, res) => {
 app.get("/orders/:id", async (req, res) => {
   const orderInfo = await queryFunctions.getAllOrderInfo(db, req.params.id)
   let templateVars = {orderInfo: orderInfo};
-  console.log(templateVars.orderInfo[0]);
   res.render('restaurants', templateVars)
 
+})
+
+app.get("/sms/:id", async (req, res) => {
+  await sms();
+  res.send("")
 })
 
 app.post('/login', (req, res) => {
