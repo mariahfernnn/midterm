@@ -4,6 +4,7 @@
 <head>
   <title>Orders</title>
   <!--Scripts-->
+
 </head>
 
 
@@ -12,7 +13,14 @@
 <body>
   <!--Div for items that have been placed-->
   <div class="orders">
-    <container id="itemsOrdered">
+    <form id='getOrders' method="GET" action="/api/orders">
+      <% for (let eachOrder of orderInfo) {%>
+      <div><%= eachOrder.name %></div>
+      <div><%= eachOrder.quantity %></div>
+      <div><%= eachOrder.price %></div>
+      <% }%>
+      <container id="itemsOrdered">
+    </form>
 
     </container>
   </div>
