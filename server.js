@@ -8,6 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
+const queryFunctions = require('./lib/query_functions');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session')
 
@@ -44,17 +45,17 @@ app.use(express.static("public"));
 
 // Added the restaurantsRoutes
 // Added the ordersRoutes
-const restaurantsRoutes = require("./routes/restaurants.js");
+// const restaurantsRoutes = require("./routes/restaurants.js");
 const ordersRoutes = require("./routes/orders.js");
-const menusRoutes = require("./routes/menus.js")
+// const menusRoutes = require("./routes/menus.js")
 
 
 // Mount all resource routes
 // Added the restaurantsRoutes
 // Added the ordersRoutes
-app.use("/api/restaurants", restaurantsRoutes(db));
+// app.use("/api/restaurants", restaurantsRoutes(db));
 app.use("/api/orders", ordersRoutes(db));
-app.use("/api/menus", menusRoutes(db));
+// app.use("/api/menus", menusRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -62,14 +63,37 @@ app.use("/api/menus", menusRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const restaurants = [
-    { id: 1, name: 'Oretta' },
-    { id: 2, name: 'Baro' },
-    { id: 3, name: 'Lee' },
-  ]
-  res.render("index", { restaurants, menus: data });
-});
+  if (res.session && res.session.user_id) {
+    const menuItems = [];
+    // const menuItems = await getMenuItemsForOwner(res.session.user_id);
+    res.render("orders", { menuItems: menuItems });
+  } else {
+    // console.log("TESTSTESTS")
+    // console.log(queryFunctions);
+    queryFunctions.getRestaurants(db).then( restaurants => {
+      queryFunctions.getMenuItems(db).then( menuItems => {
+        const menus = menuItems.reduce((acc, item) => {
 
+
+          console.log(item)
+          console.log('acc--->',acc[item.restaurant_id])
+          return {
+            ...acc,
+            [item.restaurant_id]: acc[item.restaurant_id] ?
+            [ ...acc[item.restaurant_id], item] : [item],
+          }
+        },
+        {})
+
+        console.log("MENU");
+        console.log(menus)
+
+
+        res.render("index", { restaurants, menus });
+      });
+    })
+  }
+})
 //this is for owner side
 app.get("/orders", (req, res) => {
   // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
@@ -83,10 +107,15 @@ app.get("/orders", (req, res) => {
 app.get("/orders/:id", (req, res) => {
   // SELECT * FROM order_items, JOIN ON menu_items order_items.menu_item_id = menu_items.id
   // WHERE order.id = ${req.params.id}
-
-  //trigger twillio
   res.render('restaurants')
+
+})
+
+app.post('/login', (req, res) => {
+  // auth stuff res.sessions = ...
+  res.redirect('/orders');
 });
+
 
 app.get("/login", (req, res) => {
   res.render('login')
