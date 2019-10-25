@@ -77,8 +77,6 @@ app.get("/", (req, res) => {
         const menus = menuItems.reduce((acc, item) => {
 
 
-          console.log(item)
-          console.log('acc--->',acc[item.restaurant_id])
           return {
             ...acc,
             [item.restaurant_id]: acc[item.restaurant_id] ?
@@ -87,8 +85,6 @@ app.get("/", (req, res) => {
         },
         {})
 
-        console.log("MENU");
-        console.log(menus)
 
 
         res.render("index", { restaurants, menus });
@@ -100,7 +96,6 @@ app.get("/", (req, res) => {
 app.get("/orders", async (req, res) => {
   const allOrderInfo = await queryFunctions.getOrderInfo(db)
   let templateVars1 = {allOrderInfo: allOrderInfo};
-  console.log(templateVars1)
 
   res.render('resOwners', templateVars1)
 });
