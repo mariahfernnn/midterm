@@ -1,5 +1,6 @@
 body {
   align-items: center;
+  margin: 0;
 }
 
 nav {
@@ -34,11 +35,12 @@ nav button:hover {
 
 #my-orders {
   margin-left: auto;
+
 }
 
 #back-to-home {
   margin-left: 1em;
-  margin-right: 1em;
+  margin-right: auto;
   height: 200px;
-  width: 200px;
+  width: 100%;
 }
