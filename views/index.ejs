@@ -112,15 +112,16 @@
   </div>
 
   <script>
-    $('.restaurant-select').on('click', function () {
-      const id = $(this).attr("data-id");
-      $(".menu").addClass("hidden");
-      $("#orderForm" + id).removeClass("hidden");
-        scrollTop: ($('#orderForm' + id).offset().top - 200)
-      },500);
+      $('.restaurant-select').on('click', function () {
+        const id = $(this).attr("data-id");
+        $(".menu").addClass("hidden");
+        $("#orderForm" + id).removeClass("hidden");
+        $('html, body').animate({
+          scrollTop: ($('#orderForm' + id).offset().top - 200)
+        },500);
+      })
+    </script>
 
-    })
-  </script>
   <!--
     <script>
     // To override form submit
