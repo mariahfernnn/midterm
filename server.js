@@ -72,18 +72,20 @@ app.get("/", (req, res) => {
   } else {
     // console.log("TESTSTESTS")
     // console.log(queryFunctions);
-    queryFunctions.getRestaurants(db).then( restaurants => {
-      queryFunctions.getMenuItems(db).then( menuItems => {
+    queryFunctions.getRestaurants(db).then(restaurants => {
+      queryFunctions.getMenuItems(db).then(menuItems => {
         const menus = menuItems.reduce((acc, item) => {
 
 
+          console.log(item)
+          console.log('acc--->', acc[item.restaurant_id])
           return {
             ...acc,
             [item.restaurant_id]: acc[item.restaurant_id] ?
-            [ ...acc[item.restaurant_id], item] : [item],
+              [...acc[item.restaurant_id], item] : [item],
           }
         },
-        {})
+          {})
 
 
 
@@ -95,15 +97,15 @@ app.get("/", (req, res) => {
 //this is for owner side
 app.get("/orders", async (req, res) => {
   const allOrderInfo = await queryFunctions.getOrderInfo(db)
+  console.log(allOrderInfo)
   let templateVars1 = {allOrderInfo: allOrderInfo};
-
   res.render('resOwners', templateVars1)
 });
 
 //This is for user side
 app.get("/orders/:id", async (req, res) => {
   const orderInfo = await queryFunctions.getAllOrderInfo(db, req.params.id)
-  let templateVars = {orderInfo: orderInfo};
+  let templateVars = { orderInfo: orderInfo };
   res.render('restaurants', templateVars)
 });
 
