@@ -3,10 +3,17 @@
 
 <head>
   <title> :^) </title>
+  <link rel="stylesheet" href="/styles/order_history.css" type="text/css" />
 </head>
 
 <body>
   <button id="Completed">Order Completed</button>
+  <% for (let eachOrder of allOrderInfo) { %>
+    <%= eachOrder.users_name %>
+    <%= eachOrder.total_amount %>
+    <%= eachOrder.quantity %>
+    <%= eachOrder.name %>
+    <% } %>
 </body>
 
 
