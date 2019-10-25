@@ -5,19 +5,20 @@
  */
 
 const express = require('express');
-const ordersRoutes  = express.Router();
+const ordersRoutes = express.Router();
 const queryFunction = require('../lib/query_functions');
 const sms = require("./twilio-sms");
 
+
 module.exports = function(db) {
-// Getting the orders for a particular restaurant
-  ordersRoutes.get("/", function(req, res) {
-    queryFunction.getOrderInfo(db, 'Oretta')
-    .then(rows => {
-      console.log("ORDER FUNCTION");
-      return res.json(rows);
-    })
-  });
+// // Getting the orders for a particular restaurant
+//   ordersRoutes.get("/", function(req, res) {
+//     queryFunction.getOrderInfo(db, 'Oretta')
+//     .then(rows => {
+//       console.log("ORDER FUNCTION");
+//       return res.json(rows);
+//     })
+//   });
 
 // Saving an order for a particular restaurant and order
 // Get request to get the restaurant id based on it's name

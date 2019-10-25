@@ -10,7 +10,7 @@ nav {
   z-index: 4;
 }
 
-nav button {
+nav form button {
   display: inline-block;
   margin-left: 13%;
   width: 10%;
@@ -35,4 +35,9 @@ nav button:hover {
 
 body {
   margin: 0%;
+}
+
+#BackToHome {
+  width: 100%;
+  margin-top: 25px;
 }
