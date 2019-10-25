@@ -2,18 +2,29 @@
 <html lang="en">
 
 <head>
-  <title> :^) </title>
-  <link rel="stylesheet" href="/styles/order_history.css" type="text/css" />
+  <title> Orders </title>
+  <link rel="stylesheet" href="/styles/resOwners.css" type="text/css" />
+  <link
+  href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
+  rel="stylesheet" />
+
 </head>
 
 <body>
-  <button id="Completed">Order Completed</button>
+  <nav>
+    <form action="/" method="GET">
+    <button id="back-to-home">Back To Home</button>
+    </form>
+  </nav>
+  <h1 class="incOrders">Incoming Orders</h1>
+  <div class="incOrdersDiv">
   <% for (let eachOrder of allOrderInfo) { %>
-    <%= eachOrder.users_name %>
-    <%= eachOrder.total_amount %>
-    <%= eachOrder.quantity %>
-    <%= eachOrder.name %>
+   <div> <%= eachOrder.users_name %></div>
+    <!-- <div><%= eachOrder.total_amount %></div> -->
+    <div><%= eachOrder.quantity %>
+    <%= eachOrder.name %></div>
     <% } %>
+   </div>
 </body>
 
 
