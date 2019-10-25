@@ -4,6 +4,13 @@
 <head>
   <title>Orders</title>
   <!--Scripts-->
+
+  <link rel="stylesheet" href="/styles/order_history.css" type="text/css" />
+  <link
+  href="https://fonts.googleapis.com/css?family=Cookie|Cormorant+Upright:400,600,700|Fredericka+the+Great|Milonga|Playball|Raleway|Sacramento&display=swap"
+  rel="stylesheet" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 </head>
 
 
@@ -11,6 +18,12 @@
 
 <body>
   <!--Div for items that have been placed-->
+  <nav>
+    <button id="my-orders">My Orders</button>
+    <form method="GET" action="/" id="back-to-home">
+      <button>Home</button>
+     </form>
+  </nav>
   <div class="orders">
     <container id="itemsOrdered">
 
@@ -18,7 +31,7 @@
   </div>
 
   <!--Button to send out twilio response-->
-  <button>press me!</button>
+  <button>Click me!</button>
 
 </body>
 
